@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <!-- GoatCounter analytics -->
-    <script data-goatcounter="https://hammerheadhubstuff.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+    <script data-goatcounter="https://hammerheadhubstuff.goatcounter.com/count"
+            async src="//gc.zgo.at/count.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🔨%3C/text%3E%3C/svg%3E">
     <title>Hammerhead Hub</title>
@@ -54,7 +55,9 @@
     @keyframes floatUp{0%{transform:translateY(0) scale(0);opacity:0}10%{opacity:.6}100%{transform:translateY(-120vh) scale(1.5);opacity:0}}
     .lt{font-size:clamp(3.5rem,12vw,7rem);font-weight:900;background:linear-gradient(90deg,var(--primary),var(--accent),var(--accent-dark),var(--primary));background-size:300% 300%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;letter-spacing:-3px;animation:textGradient 5s ease infinite;margin-bottom:.5rem;filter:drop-shadow(0 0 30px rgba(100,255,218,.3));text-align:center}
     @keyframes textGradient{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
-    .ls{font-size:1.5rem;color:var(--text-secondary);margin-bottom:3rem;font-weight:300;letter-spacing:2px;animation:fadeInUp 1s ease .3s both}
+    .ls{font-size:1.5rem;color:var(--text-secondary);margin-bottom:1.2rem;font-weight:300;letter-spacing:2px;animation:fadeInUp 1s ease .3s both}
+    .visitor-count{display:inline-flex;align-items:center;gap:10px;margin:0 auto 2rem;padding:10px 18px;border-radius:999px;background:rgba(10,25,47,.55);border:1px solid rgba(100,255,218,.25);box-shadow:0 10px 30px rgba(0,0,0,.22),0 0 20px rgba(100,255,218,.08);backdrop-filter:blur(14px);color:var(--primary);font-size:.88rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;animation:fadeInUp 1s ease .42s both}
+    .visitor-count img{height:18px;min-width:42px;filter:drop-shadow(0 0 8px rgba(100,255,218,.25))}
     .br,.brs{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin:0 auto 20px;max-width:900px;animation:fadeInUp 1s ease .5s both}
     @keyframes fadeInUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
     button{cursor:pointer;border-radius:50px;font-weight:600;transition:all var(--transition-base);border:none;font-family:inherit;position:relative;overflow:hidden;isolation:isolate}
@@ -343,6 +346,7 @@
       <div style="text-align:center;z-index:10">
         <h1 class="lt">🔨 Hammerhead Hub</h1>
         <p class="ls">Dive into the deep blue</p>
+        <div class="visitor-count"><span>👀 Visitors</span><img src="https://hammerheadhubstuff.goatcounter.com/counter/TOTAL.svg" alt="visitor count"></div>
         <div class="br">
           <button class="b1" onclick="enterHub()">Continue →</button>
           <button class="b2" onclick="toggleFullscreen()">⛶ Fullscreen</button>
