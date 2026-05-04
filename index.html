@@ -1049,14 +1049,8 @@ function initFeatureExtras(){
   if(ct)ct.value=ST.get('cloakTitle')||'Google Classroom';
   if(cu)cu.value=ST.get('cloakUrl')||'https://classroom.google.com/';
   if(ci)ci.value=ST.get('cloakIcon')||'https://ssl.gstatic.com/classroom/favicon.png';
-  runStartupIntro();
+  initAnimatedIntro();
 }
-function runStartupIntro(){
-  const start=()=>{try{document.querySelectorAll('.hammerhead-start-intro').forEach(e=>e.remove());initAnimatedIntro();}catch(e){console.warn('Intro failed, retrying once',e);setTimeout(()=>{try{initAnimatedIntro();}catch(err){}},400);}};
-  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',()=>setTimeout(start,80),{once:true});
-  else setTimeout(start,80);
-}
-window.addEventListener('pageshow',e=>{if(e.persisted)setTimeout(runStartupIntro,120);});
 
 function ensureHubSidebar(){
   if(!document.body)return;
