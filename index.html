@@ -253,6 +253,7 @@
 </head>
 <body class="startup-intro-pending">
 <script>
+setTimeout(()=>{try{document.body.classList.remove('startup-intro-pending');}catch(e){}},5200);
 (function(){
   const block=e=>{e.preventDefault();e.stopPropagation();return false;};
   document.addEventListener('contextmenu',block,true);
@@ -1055,7 +1056,9 @@ function initFeatureExtras(){
 }
 function runStartupIntro(){
   document.body.classList.add('startup-intro-pending');
-  const revealLanding=()=>document.body.classList.remove('startup-intro-pending');
+  let revealed=false;
+  const revealLanding=()=>{if(revealed)return;revealed=true;document.body.classList.remove('startup-intro-pending');};
+  setTimeout(revealLanding,5200);
   const start=()=>{
     try{
       document.querySelectorAll('.hammerhead-start-intro').forEach(e=>e.remove());
@@ -1065,7 +1068,7 @@ function runStartupIntro(){
       setTimeout(()=>{try{initAnimatedIntro();setTimeout(revealLanding,3600);}catch(err){revealLanding();}},400);
     }
   };
-  if(document.readyState==='complete')setTimeout(start,120);
+  if(document.readyState==='complete'||document.readyState==='interactive')setTimeout(start,120);
   else window.addEventListener('load',()=>setTimeout(start,120),{once:true});
 }
 window.addEventListener('pageshow',e=>{if(e.persisted)setTimeout(runStartupIntro,120);});
