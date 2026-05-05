@@ -186,6 +186,8 @@
     #playtimer{position:fixed;bottom:24px;right:24px;background:rgba(10,25,47,.8);border:1px solid var(--border);border-radius:50px;padding:10px 20px;font-size:.875rem;color:var(--primary);z-index:100;opacity:0;transition:all var(--transition-base);cursor:pointer;backdrop-filter:blur(20px);font-weight:600}
     #playtimer:hover{opacity:1!important;transform:scale(1.05)}
     #playtimer.visible{opacity:.85}
+    #visitor-counter{position:fixed;bottom:24px;left:24px;background:rgba(10,25,47,.92);border:1px solid var(--border);border-radius:50px;padding:10px 18px;font-size:.82rem;color:var(--primary);z-index:100010;backdrop-filter:blur(20px);font-weight:800;box-shadow:var(--shadow-md);display:flex;align-items:center;gap:8px;pointer-events:none}
+    #visitor-counter small{color:var(--text-secondary);font-weight:700}
     .tooltip{position:fixed;background:rgba(10,25,47,.95);color:var(--text-primary);padding:12px 18px;border-radius:12px;font-size:.875rem;pointer-events:none;z-index:9999;opacity:0;transition:all .2s;max-width:280px;line-height:1.5;border:1px solid var(--border);backdrop-filter:blur(20px);box-shadow:var(--shadow-lg);transform:translateY(10px)}
     .tooltip.show{opacity:1;transform:translateY(0)}
     #ach-popup{position:fixed;top:30px;left:50%;transform:translateX(-50%) translateY(-150px);background:linear-gradient(135deg,var(--accent),var(--accent-dark));color:#fff;padding:20px 40px;border-radius:50px;font-weight:700;box-shadow:0 20px 60px rgba(0,180,216,.4);z-index:10000;transition:transform .6s var(--ease-spring);border:2px solid rgba(255,255,255,.2);text-align:center}
@@ -296,6 +298,7 @@
     <canvas id="bg-canvas"></canvas>
     <div id="clock-widget" title="Drag to move"><div class="time" id="clock-time">12:00</div><div class="date" id="clock-date">Loading...</div></div>
     <div id="playtimer" onclick="toggleTimerVisibility()">⏱️ <span id="timer-display">0:00</span></div>
+    <div id="visitor-counter"><span>👀</span><span id="visitor-count-number">Loading...</span><small>visits</small></div>
     <div id="tooltip" class="tooltip"></div>
     <button id="hub-sidebar-toggle" class="hub-sidebar-toggle" title="Open quick menu" onclick="toggleHubSidebar()">☰</button>
     <nav id="hub-sidebar" class="hub-sidebar closed">
@@ -882,6 +885,31 @@ function updateFishCount(n){fishCount=parseInt(n);ST.set('fc',n);document.getEle
 function updateFishColor(hue){fishHue=parseInt(hue);ST.set('fh',hue);document.getElementById('fish-color-preview').style.background=`linear-gradient(135deg,${hslToHex(fishHue,90,80)},${hslToHex(fishHue,90,45)})`; }
 
 
+function initVisitorCounter(){
+  const box=document.getElementById('visitor-count-number');
+  if(!box)return;
+  const setText=t=>{box.textContent=t;};
+  const fallback=()=>setText('tracking');
+  const trySimpleAnalytics=()=>{
+    if(window.simpleanalytics&&typeof window.simpleanalytics.visit_count==='function'){
+      try{
+        box.textContent='';
+        window.simpleanalytics.visit_count({
+          append:'#visitor-count-number',
+          type:'html',
+          path:'TOTAL',
+          no_branding:true
+        });
+        setTimeout(()=>{if(!box.textContent.trim())fallback();},2000);
+        return true;
+      }catch(e){}
+    }
+    return false;
+  };
+  if(trySimpleAnalytics())return;
+  setTimeout(()=>{if(!trySimpleAnalytics())fallback();},1400);
+}
+
 /* INIT */
 window.onload=()=>{
   initPanicKey();
@@ -898,6 +926,7 @@ window.onload=()=>{
   document.addEventListener('click',handleFishClick);
   window.addEventListener('resize',()=>{if(fishCanvas){fishCanvas.width=window.innerWidth;fishCanvas.height=window.innerHeight;}});
   loadSettings();
+  initVisitorCounter();
   initFeatureExtras();
 
   ensureHubSidebar();
