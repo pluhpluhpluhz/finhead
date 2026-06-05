@@ -2,13 +2,6 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-<script>
-  window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
-  plausible.init()
-</script>
-
-    <!-- 100% privacy-first analytics -->
-    <script async src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E👅%3C/text%3E%3C/svg%3E">
     <title>pleasegivemehead</title>
@@ -191,8 +184,6 @@
     #playtimer{position:fixed;bottom:24px;right:24px;background:rgba(10,25,47,.8);border:1px solid var(--border);border-radius:50px;padding:10px 20px;font-size:.875rem;color:var(--primary);z-index:100;opacity:0;transition:all var(--transition-base);cursor:pointer;backdrop-filter:blur(20px);font-weight:600}
     #playtimer:hover{opacity:1!important;transform:scale(1.05)}
     #playtimer.visible{opacity:.85}
-    #visitor-counter{position:fixed;bottom:24px;left:24px;background:rgba(10,25,47,.92);border:1px solid var(--border);border-radius:50px;padding:10px 18px;font-size:.82rem;color:var(--primary);z-index:100010;backdrop-filter:blur(20px);font-weight:800;box-shadow:var(--shadow-md);display:flex;align-items:center;gap:8px;pointer-events:none}
-    #visitor-counter small{color:var(--text-secondary);font-weight:700}
     #landing-choice-modal{display:none;position:fixed;inset:0;z-index:100020;background:rgba(0,0,0,.68);backdrop-filter:blur(12px);align-items:center;justify-content:center;padding:22px}
     #landing-choice-modal.open{display:flex}
     .landing-choice-card{width:min(420px,94vw);background:linear-gradient(180deg,rgba(10,25,47,.98),rgba(2,6,23,.98));border:1px solid rgba(100,255,218,.32);border-radius:26px;padding:26px;box-shadow:0 30px 90px rgba(0,0,0,.68);text-align:center;color:var(--text-primary)}
@@ -326,7 +317,6 @@
     <canvas id="bg-canvas"></canvas>
     <div id="clock-widget" title="Drag to move"><div class="time" id="clock-time">12:00</div><div class="date" id="clock-date">Loading...</div></div>
     <div id="playtimer" onclick="toggleTimerVisibility()">⏱️ <span id="timer-display">0:00</span></div>
-    <div id="visitor-counter"><span>👀</span><span id="visitor-count-number">Loading...</span><small>visits</small></div>
     <div id="landing-choice-modal" onclick="if(event.target===this)closeLandingChoice()">
       <div class="landing-choice-card">
         <h2 id="landing-choice-title">Open this?</h2>
@@ -385,7 +375,7 @@
       <div class="bubble-lp" style="width:55px;height:55px;left:45%;animation-duration:11s;animation-delay:.8s"></div>
       <div id="landing-actions" style="text-align:center;z-index:10">
         <h1 class="lt">👅 pleasegivemehead</h1>
-        <p class="ls">Dive into the deep blue</p>
+        <p class="ls">Dive into my head</p>
         <div class="br">
           <button class="b1" onclick="showLandingChoice('hub','Continue')">Continue →</button>
           <button class="b2" onclick="showLandingChoice('fullscreen','Fullscreen')">⛶ Fullscreen</button>
@@ -967,31 +957,6 @@ function openLandingActionInNewTab(action){
   w.document.write(html);
   w.document.close();
 }
-function initVisitorCounter(){
-  const box=document.getElementById('visitor-count-number');
-  if(!box)return;
-  const setText=t=>{box.textContent=t;};
-  const fallback=()=>setText('tracking');
-  const trySimpleAnalytics=()=>{
-    if(window.simpleanalytics&&typeof window.simpleanalytics.visit_count==='function'){
-      try{
-        box.textContent='';
-        window.simpleanalytics.visit_count({
-          append:'#visitor-count-number',
-          type:'html',
-          path:'TOTAL',
-          no_branding:true
-        });
-        setTimeout(()=>{if(!box.textContent.trim())fallback();},2000);
-        return true;
-      }catch(e){}
-    }
-    return false;
-  };
-  if(trySimpleAnalytics())return;
-  setTimeout(()=>{if(!trySimpleAnalytics())fallback();},1400);
-}
-
 /* INIT */
 window.onload=()=>{
   initPanicKey();
@@ -1002,7 +967,6 @@ window.onload=()=>{
   document.addEventListener('keydown',handlePanicKey,true);
   window.addEventListener('resize',()=>{if(fishCanvas){fishCanvas.width=window.innerWidth;fishCanvas.height=window.innerHeight;}});
   loadSettings();
-  initVisitorCounter();
   initFeatureExtras();
 
   ensureHubSidebar();
