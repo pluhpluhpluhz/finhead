@@ -1674,7 +1674,7 @@ function toggleTrail(){
   trailEnabled=false;ST.set('trailEnabled','false');
   document.getElementById('trail-toggle').classList.remove('active');
   destroyFish();
-  showErrorToast('Trail effects are disabled in plain mode');
+  showErrorToast('Trail effects are not available');
 }
 function spawnTrail(x,y){
   const el=document.createElement('div');
