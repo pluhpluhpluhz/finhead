@@ -26,8 +26,6 @@
     .maint-btn{cursor:pointer;border-radius:50px;font-weight:600;transition:all 0.3s ease;border:none;font-family:inherit;padding:1.25rem 2.5rem;font-size:1.1rem;color:#fff;position:relative;overflow:hidden}
     .maint-btn-media{background:linear-gradient(135deg,#e50914,#b20710);border:2px solid rgba(255,107,107,0.5);box-shadow:0 10px 40px rgba(229,9,20,0.4)}
     .maint-btn-media:hover{transform:translateY(-4px) scale(1.02);box-shadow:0 15px 50px rgba(229,9,20,0.6)}
-    .maint-btn-suggest{background:linear-gradient(135deg,#1a7a1a,#2ecc2e);border:2px solid rgba(100,255,100,0.5);box-shadow:0 10px 40px rgba(46,204,46,0.4)}
-    .maint-btn-suggest:hover{transform:translateY(-4px) scale(1.02);box-shadow:0 15px 50px rgba(46,204,46,0.6)}
     .maint-btn-retry{background:linear-gradient(135deg,var(--accent-dark),var(--accent));border:2px solid rgba(100,255,218,0.5);box-shadow:0 10px 40px rgba(0,180,216,0.4)}
     .maint-btn-retry:hover{transform:translateY(-4px) scale(1.02);box-shadow:0 15px 50px rgba(0,180,216,0.6)}
     .maint-particles{position:absolute;width:100%;height:100%;top:0;left:0;pointer-events:none;overflow:hidden}
@@ -76,8 +74,6 @@
     .update-date{display:block;color:#8892b0;font-size:.78rem;font-weight:700;margin:2px 0 4px}
 
     @keyframes updateBadgePulse{0%,100%{transform:scale(1);box-shadow:0 0 12px rgba(255,45,85,.55)}50%{transform:scale(1.14);box-shadow:0 0 24px rgba(255,45,85,.9)}}
-    .b7{background:linear-gradient(135deg,#1a7a1a,#2ecc2e);border:2px solid rgba(100,255,100,.5)}
-    .b7:hover{transform:translateY(-3px);color:var(--bg-deep)}
     .cloak-btn{position:fixed;top:20px;left:20px;background:linear-gradient(135deg,#000,#111);color:#fff;border:1px solid rgba(255,255,255,.18);border-radius:16px;padding:12px 16px;display:flex;flex-direction:column;align-items:flex-start;gap:2px;z-index:100003;box-shadow:0 10px 30px rgba(0,0,0,.45)}
     .cloak-btn:hover{transform:translateY(-2px);box-shadow:0 14px 36px rgba(0,0,0,.55)}
     .cloak-btn small{font-size:.72rem;opacity:.75;letter-spacing:.04em;text-transform:lowercase}
@@ -261,12 +257,12 @@
     .orb,.bubble-lp,.maint-particles,.sakura,#bg-canvas{display:none!important}
     html,body,#lp,#maintenance-page,.con,#sp,#go,#cb,#gcw,#data-modal .modal-content,
     .hub-sidebar,.settings-reminder-card,#test-homepage-wrap,#test-homepage-games,.card,
-    .cov,.nm,.fb,.pb,button,.maint-btn,.setb,.sap,.b1,.b2,.b3,.b4,.b6,.b7,.bs,
+    .cov,.nm,.fb,.pb,button,.maint-btn,.setb,.sap,.b1,.b2,.b3,.b4,.b6,.bs,
     .aib,.rndb,.ctb,.sort-btn,.hub-sidebar-item,.hub-sidebar-toggle,.cloak-btn{
       background-image:none!important
     }
     body,#lp,#maintenance-page,.con,#sp,#go,.hub-sidebar,.settings-reminder-card,#test-homepage-wrap,#test-homepage-games,.card{background-color:#0f172a!important}
-    button,.maint-btn,.setb,.sap,.b1,.b2,.b3,.b4,.b6,.b7,.bs,.aib,.rndb,.ctb,.sort-btn,.hub-sidebar-item,.hub-sidebar-toggle,.cloak-btn,.pb{background-color:#1e293b!important;color:#e2e8f0!important;border:1px solid #475569!important}
+    button,.maint-btn,.setb,.sap,.b1,.b2,.b3,.b4,.b6,.bs,.aib,.rndb,.ctb,.sort-btn,.hub-sidebar-item,.hub-sidebar-toggle,.cloak-btn,.pb{background-color:#1e293b!important;color:#e2e8f0!important;border:1px solid #475569!important}
     h1,.lt,.maint-icon{background:none!important;-webkit-text-fill-color:currentColor!important;color:#e2e8f0!important}
     .nm,.pb,.fb{opacity:1!important;transform:none!important}
     @media(max-width:768px){.gg{grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:16px}#sp{width:100%}#clock-widget{top:12px;right:12px;padding:12px 16px}.lt{font-size:2.5rem}.maint-message{font-size:1.8rem}#cb{padding:14px 16px}#cb .game-actions{width:100%;justify-content:flex-start}#cb .game-actions button{flex:1 1 auto}}
@@ -304,7 +300,6 @@
             <div class="maint-btn-row">
                 <button class="maint-btn maint-btn-retry" onclick="checkGameStatus()">🔄 Retry Connection</button>
                 <button class="maint-btn maint-btn-media" onclick="openMedia1()">🎬 Media</button>
-                <button class="maint-btn maint-btn-suggest" onclick="openSuggestions()">📋 Suggestions</button>
             </div>
         </div>
     </div>
@@ -343,7 +338,6 @@
       <button class="hub-sidebar-item" onclick="openMedia1()"><span class="ico">🎬</span><span>Media<small>Open cinema page</small></span></button>
 
       <button class="hub-sidebar-item" onclick="openHubUpdates()"><span class="ico">📢</span><span>Updates <span class="update-badge">NEW</span><small>See what changed</small></span></button>
-      <button class="hub-sidebar-item" onclick="openSuggestions()"><span class="ico">📋</span><span>Suggestions<small>Request changes</small></span></button>
       <button class="hub-sidebar-item" onclick="toggleFullscreen()"><span class="ico">⛶</span><span>Fullscreen<small>Toggle screen mode</small></span></button>
     </nav>
 
@@ -384,7 +378,6 @@
         </div>
         <div class="brs">
           <button class="bs b6" onclick="showLandingChoice('updates','Updates')">📢 Updates <span class="update-badge">NEW</span></button>
-          <button class="bs b7" onclick="showLandingChoice('suggestions','Suggestions')">📋 Suggestions</button>
         </div>
       </div>
     </div>
@@ -942,12 +935,10 @@ function runLandingActionHere(action){
   else if(action==='fullscreen')toggleFullscreen();
   else if(action==='media')openMedia1();
   else if(action==='updates')openHubUpdates();
-  else if(action==='suggestions')openSuggestions();
 }
 function openLandingActionInNewTab(action){
   playSound('open');
   if(action==='media'){openUrlInAboutBlank('https://cinemaos.tech','🎬 Media');return;}
-  if(action==='suggestions'){openSuggestions();return;}
   if(action==='fullscreen'){openLandingInAboutBlank();showErrorToast('New tab opened. Use fullscreen there.');return;}
   const w=window.open('about:blank','_blank');
   if(!w){showErrorToast('Allow popups to open new tab');return;}
@@ -1138,7 +1129,6 @@ function ensureHubSidebar(){
       '<button class="hub-sidebar-item" onclick="openLandingInAboutBlank()"><span class="ico">🕶️</span><span>Cloak Tab<small>Open about:blank copy</small></span></button>'+
       '<button class="hub-sidebar-item" onclick="openMedia1()"><span class="ico">🎬</span><span>Media<small>Open cinema page</small></span></button>'+
       '<button class="hub-sidebar-item" onclick="openHubUpdates()"><span class="ico">📢</span><span>Updates<small>See what changed</small></span></button>'+
-      '<button class="hub-sidebar-item" onclick="openSuggestions()"><span class="ico">📋</span><span>Suggestions<small>Request changes</small></span></button>'+
       '<button class="hub-sidebar-item" onclick="toggleFullscreen()"><span class="ico">⛶</span><span>Fullscreen<small>Toggle screen mode</small></span></button>';
     document.body.appendChild(s);
   }
@@ -1652,11 +1642,6 @@ function openCinemaOS(){
   const w=window.open('about:blank','_blank');
   if(!w)return;
   w.document.write(`<!DOCTYPE html><html><head><title>Media</title><style>*{margin:0;padding:0;box-sizing:border-box}html,body{width:100%;height:100%;background:#000;overflow:hidden;font-family:Segoe UI,system-ui,sans-serif}.shell{width:100%;height:100%;display:flex;flex-direction:column}.bar{height:56px;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 14px;background:rgba(10,25,47,.96);border-bottom:1px solid rgba(100,255,218,.18);color:#e6f1ff}.ttl{font-weight:800;color:#64ffda;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.acts{display:flex;gap:10px;align-items:center}.bar button{border:none;border-radius:10px;padding:8px 14px;font-weight:800;cursor:pointer}.back{background:linear-gradient(135deg,#64ffda,#00b4d8);color:#0a192f}.close{background:rgba(255,255,255,.08);color:#fff;border:1px solid rgba(100,255,218,.18)}.stage{position:relative;flex:1}.stage iframe{position:absolute;inset:0;width:100%;height:100%;border:none;background:#000}#L{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);color:#e50914;font-size:24px;font-family:sans-serif;z-index:2}</style></head><body><div class="shell"><div class="bar"><button class="back" onclick="if(window.opener&&!window.opener.closed){window.opener.focus();window.close()}else{const w=window.open('about:blank','_blank');if(w){w.document.open();w.document.write(localStorage.getItem('pleasegivemeheadHTML')||'');w.document.close();}}">← Back to Landing</button><div class="ttl">🎬 Media</div><div class="acts"><button class="close" onclick="window.close()">✕ Close</button></div></div><div class="stage"><div id="L">Loading...</div><iframe src="https://cinemaos.tech" allowfullscreen onload="document.getElementById('L').style.display='none'"></iframe></div></div></body></html>`);
-}
-function openSuggestions(){
-  const w=window.open('about:blank','_blank');
-  if(!w)return;
-  w.document.write(`<!DOCTYPE html><html><head><title>Suggestions</title><style>*{margin:0;padding:0;box-sizing:border-box}html,body{width:100%;height:100%;background:#08111f;overflow:hidden;font-family:Segoe UI,system-ui,sans-serif;color:#e6f1ff}.shell{width:100%;height:100%;display:flex;flex-direction:column}.bar{height:56px;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 14px;background:rgba(10,25,47,.96);border-bottom:1px solid rgba(100,255,218,.18)}.ttl{font-weight:800;color:#64ffda;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.acts{display:flex;gap:10px;align-items:center}.bar button{border:none;border-radius:10px;padding:8px 14px;font-weight:800;cursor:pointer}.back{background:linear-gradient(135deg,#64ffda,#00b4d8);color:#0a192f}.open{background:linear-gradient(135deg,#0077b6,#00b4d8);color:#fff}.framewrap{position:relative;flex:1}.hint{position:absolute;top:14px;right:14px;z-index:2;background:rgba(10,25,47,.82);border:1px solid rgba(100,255,218,.18);border-radius:12px;padding:10px 12px;font-size:12px;color:#cfe6ff;max-width:280px}.framewrap iframe{position:absolute;inset:0;width:100%;height:100%;border:none;background:#fff}</style></head><body><div class="shell"><div class="bar"><button class="back" onclick="if(window.opener&&!window.opener.closed){window.opener.focus();window.close()}else{const w=window.open('about:blank','_blank');if(w){w.document.open();w.document.write(localStorage.getItem('pleasegivemeheadHTML')||'');w.document.close();}}">← Back to Landing</button><div class="ttl">📋 Suggestions</div><div class="acts"><button class="open" onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSdtNNM9-h-WX5oXop4IUluolZUn2PLjEvpL8yzqxXh2O4NEMg/viewform','_blank')">↗ Open direct</button></div></div><div class="framewrap"><div class="hint">If the form does not load here, use <strong>Open direct</strong>.</div><iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdtNNM9-h-WX5oXop4IUluolZUn2PLjEvpL8yzqxXh2O4NEMg/viewform"></iframe></div></div></body></html>`);
 }
 
 
