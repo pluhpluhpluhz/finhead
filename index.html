@@ -1649,24 +1649,8 @@ function toggleTrail(){
   document.getElementById('trail-toggle').classList.remove('active');
   destroyFish();
 }
-function handleTrailMove(e){
-  return;
-  const x=e.clientX,y=e.clientY;
-  fishCX=x;fishCY=y;
-  if(!trailEnabled)return;
-  if(trailType==='fish'){if(!fishCanvas)initFish();return;}
-  const dx=x-lastTrailX,dy=y-lastTrailY;
-  if(dx*dx+dy*dy<64)return;
-  lastTrailX=x;lastTrailY=y;
-  spawnTrail(x,y);
-}
-function handleFishClick(){
-  return;
-  if(trailType==='fish'&&trailEnabled&&fishList.length){
-    fishList.forEach(f=>{const a=Math.random()*Math.PI*2,s=4+Math.random()*8;f.vx=Math.cos(a)*s;f.vy=Math.sin(a)*s;f.scattered=true;});
-    setTimeout(()=>fishList.forEach(f=>{f.scattered=false;f.vx=0;f.vy=0;}),2200);
-  }
-}
+function handleTrailMove(){}
+function handleFishClick(){}
 function spawnTrail(x,y){
   const el=document.createElement('div');
   const c=getTrailColor();
@@ -1703,8 +1687,7 @@ function spawnTrail(x,y){
 
 /* BACKGROUND ANIMATIONS */
 window.bgAnimGen=0;
-function setBackgroundAnim(type){
-  type='none';
+function setBackgroundAnim(){
   ST.set('bgAnim','none');
   const c=document.getElementById('bg-canvas'),ctx=c.getContext('2d');
   if(window.bgAnimReq){cancelAnimationFrame(window.bgAnimReq);window.bgAnimReq=null;}
