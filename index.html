@@ -205,46 +205,6 @@
     .landing-choice-stay{background:linear-gradient(135deg,var(--primary),var(--accent));color:var(--bg-deep)!important}
     .landing-choice-new{background:linear-gradient(135deg,var(--accent-dark),var(--accent))}
     .landing-choice-cancel{margin-top:12px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);color:var(--text-secondary)!important;padding:10px 16px!important}
-    #credits-modal{display:none;position:fixed;inset:0;z-index:100025;background:rgba(0,0,0,.76);backdrop-filter:blur(14px);align-items:center;justify-content:center;padding:22px}
-    #credits-modal.open{display:flex}
-    .credits-card{width:min(640px,94vw);max-height:84vh;overflow-y:auto;background:radial-gradient(circle at 30% 0%,rgba(100,255,218,.08),transparent 32%),linear-gradient(180deg,rgba(18,6,8,.98),rgba(8,3,5,.98));border:1px solid rgba(255,255,255,.08);border-radius:28px;padding:28px;box-shadow:0 30px 90px rgba(0,0,0,.72);color:#f7e5dc;position:relative}
-    .credits-card::-webkit-scrollbar{width:8px}
-    .credits-card::-webkit-scrollbar-thumb{background:rgba(255,255,255,.18);border-radius:999px}
-    .credits-head{display:block;margin-bottom:18px;text-align:left}
-    .credits-head h2{font-size:1.75rem;color:#fff;margin:0 0 6px;background:none;-webkit-text-fill-color:currentColor;animation:none}
-    .credits-head p{color:#d8b7a8;font-size:.95rem;line-height:1.5}
-    .credits-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px;margin-top:18px}
-    .credit-link{min-height:190px;display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-start;text-decoration:none;color:#fff;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.08);border-radius:18px;padding:18px;transition:all var(--transition-fast);position:relative;overflow:hidden}
-    .credit-link::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 22% 18%,rgba(255,255,255,.1),transparent 22%);pointer-events:none}
-    .credit-link:hover{transform:translateY(-3px);border-color:rgba(100,255,218,.4);background:rgba(100,255,218,.08);box-shadow:0 18px 36px rgba(0,0,0,.32)}
-    .credit-avatar{width:86px;height:86px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:15px;background:rgba(0,0,0,.35);border:1px solid rgba(255,255,255,.1);box-shadow:0 0 0 8px rgba(255,255,255,.02);overflow:hidden}
-    .credit-avatar svg{width:54px;height:54px;display:block}
-    .credit-avatar img{width:100%;height:100%;object-fit:cover;display:block}
-    .credit-avatar.avatar-missing{background:radial-gradient(circle at 35% 25%,rgba(255,255,255,.35),transparent 28%),linear-gradient(135deg,#25f4ee,#fe2c55 48%,#7c3aed);color:#fff;font-weight:900;font-size:1rem;text-shadow:0 2px 10px rgba(0,0,0,.55)}
-    .credit-avatar.avatar-missing::after{content:attr(data-label)}
-    .credit-logo{width:28px;height:28px;border-radius:10px;display:flex;align-items:center;justify-content:center;position:absolute;right:14px;top:14px}
-    .credit-logo svg{width:18px;height:18px;display:block}
-    .tiktok-logo{background:linear-gradient(135deg,#25f4ee,#fe2c55)}
-    .discord-logo{background:#5865f2}
-    .credit-text{display:flex;flex-direction:column;line-height:1.25;position:relative;z-index:1}
-    .credit-text strong{font-size:1rem;color:#fff}
-    .credit-text span{color:#d8b7a8;font-weight:700;margin-top:5px}
-    .credit-text small{color:#9b8278;font-weight:700;margin-top:9px;word-break:break-all;font-size:.72rem}
-    .credits-doc-link{display:flex;align-items:center;gap:14px;margin-top:18px;text-decoration:none;color:#fff;background:rgba(66,133,244,.12);border:1px solid rgba(66,133,244,.35);border-radius:18px;padding:16px 18px;transition:all var(--transition-fast)}
-    .credits-doc-link:hover{transform:translateY(-2px);background:rgba(66,133,244,.2);box-shadow:0 18px 36px rgba(0,0,0,.32)}
-    .credits-doc-icon{width:42px;height:42px;border-radius:12px;background:#4285f4;display:flex;align-items:center;justify-content:center;font-size:1.35rem;flex:0 0 auto;overflow:hidden}
-    .credits-doc-icon img{width:100%;height:100%;object-fit:cover;display:block}
-    .credits-doc-link strong{display:block;font-size:1rem}
-    .credits-doc-link small{display:block;color:#d8b7a8;font-weight:700;margin-top:3px;word-break:break-all}
-    .credits-server-link{background:rgba(88,101,242,.14);border-color:rgba(88,101,242,.42)}
-    .credits-server-link:hover{background:rgba(88,101,242,.24)}
-    .credits-server-link .credits-doc-icon{background:#5865f2}
-    .credits-server-card{grid-column:1/-1;min-height:92px;display:flex;flex-direction:row;align-items:center;gap:16px;background:rgba(88,101,242,.14);border-color:rgba(88,101,242,.42)}
-    .credits-server-card:hover{background:rgba(88,101,242,.24)}
-    .credits-server-card .credits-doc-icon{width:58px;height:58px;border-radius:16px;background:#5865f2;overflow:hidden;flex:0 0 auto}
-    .credits-server-card .credits-doc-icon img{width:100%;height:100%;object-fit:cover;display:block}
-    .credits-scroll-note{margin:20px 0 120px;color:#d8b7a8;text-align:center;font-size:.85rem}
-    .credits-close-bottom{width:100%;margin-top:10px;background:linear-gradient(135deg,var(--primary),var(--accent));color:var(--bg-deep);padding:14px 18px;font-size:.95rem;font-weight:900}
     .tooltip{position:fixed;background:rgba(10,25,47,.95);color:var(--text-primary);padding:12px 18px;border-radius:12px;font-size:.875rem;pointer-events:none;z-index:9999;opacity:0;transition:all .2s;max-width:280px;line-height:1.5;border:1px solid var(--border);backdrop-filter:blur(20px);box-shadow:var(--shadow-lg);transform:translateY(10px)}
     .tooltip.show{opacity:1;transform:translateY(0)}
     #ach-popup{position:fixed;top:30px;left:50%;transform:translateX(-50%) translateY(-150px);background:linear-gradient(135deg,var(--accent),var(--accent-dark));color:#fff;padding:20px 40px;border-radius:50px;font-weight:700;box-shadow:0 20px 60px rgba(0,180,216,.4);z-index:10000;transition:transform .6s var(--ease-spring);border:2px solid rgba(255,255,255,.2);text-align:center}
@@ -380,40 +340,6 @@
         <button class="landing-choice-cancel" onclick="closeLandingChoice()">Cancel</button>
       </div>
     </div>
-    <div id="credits-modal">
-      <div class="credits-card">
-        <div class="credits-head">
-          <h2>Credits</h2>
-          <p>People who contributed to this project. Scroll down to close this popup.</p>
-        </div>
-        <div class="credits-list">
-          <a class="credit-link" href="https://www.tiktok.com/@tk89232" target="_blank" rel="noopener noreferrer">
-            <span class="credit-logo tiktok-logo"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.7 2c.35 2.7 1.85 4.35 4.3 4.52v3.05c-1.42.13-2.67-.33-4.2-1.2v5.72c0 7.27-7.92 9.54-11.1 4.33-2.05-3.36-.8-9.25 5.78-9.48v3.22c-.46.08-.95.2-1.4.35-1.34.45-2.1 1.3-1.9 2.8.38 2.88 5.7 3.73 5.26-1.9V2h3.26z"/></svg></span>
-            <span class="credit-avatar" data-label="@tk"><img src="./Screenshot%202026-05-06%2012.15.02%20PM.png" alt="" onerror="this.remove();this.parentElement.classList.add('avatar-missing')"></span>
-            <span class="credit-text"><strong>@tk89232</strong><span>Founder</span><small>tiktok.com/@tk89232</small></span>
-          </a>
-          <a class="credit-link" href="https://www.tiktok.com/@josxmu" target="_blank" rel="noopener noreferrer">
-            <span class="credit-logo tiktok-logo"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.7 2c.35 2.7 1.85 4.35 4.3 4.52v3.05c-1.42.13-2.67-.33-4.2-1.2v5.72c0 7.27-7.92 9.54-11.1 4.33-2.05-3.36-.8-9.25 5.78-9.48v3.22c-.46.08-.95.2-1.4.35-1.34.45-2.1 1.3-1.9 2.8.38 2.88 5.7 3.73 5.26-1.9V2h3.26z"/></svg></span>
-            <span class="credit-avatar" data-label="@jx"><img src="./Screenshot%202026-05-06%2012.15.45%20PM.png" alt="" onerror="this.remove();this.parentElement.classList.add('avatar-missing')"></span>
-            <span class="credit-text"><strong>@josxmu</strong><span>Founder</span><small>tiktok.com/@josxmu</small></span>
-          </a>
-          <a class="credit-link credits-server-card" href="https://discord.gg/7RSKyYpYwt" target="_blank" rel="noopener noreferrer">
-            <span class="credit-logo discord-logo"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.32 4.37A19.8 19.8 0 0 0 15.36 2.8l-.24.48a18.2 18.2 0 0 1 4.37 2.22A14.6 14.6 0 0 0 12 3.6a14.6 14.6 0 0 0-7.49 1.9 18.2 18.2 0 0 1 4.37-2.22l-.24-.48a19.8 19.8 0 0 0-4.96 1.57C.54 9.04-.3 13.6.12 18.08a20 20 0 0 0 6.09 3.1l.73-1.19a12.7 12.7 0 0 1-1.9-.91l.45-.35A14.2 14.2 0 0 0 12 20.2a14.2 14.2 0 0 0 6.5-1.47l.45.35c-.6.36-1.23.67-1.9.91l.73 1.19a20 20 0 0 0 6.09-3.1c.5-5.2-.86-9.72-3.55-13.71zM8.02 15.33c-1.18 0-2.14-1.08-2.14-2.4s.94-2.4 2.14-2.4c1.2 0 2.16 1.08 2.14 2.4 0 1.32-.94 2.4-2.14 2.4zm7.96 0c-1.18 0-2.14-1.08-2.14-2.4s.94-2.4 2.14-2.4c1.2 0 2.16 1.08 2.14 2.4 0 1.32-.94 2.4-2.14 2.4z"/></svg></span>
-            <span class="credits-doc-icon"><img src="https://cdn.discordapp.com/icons/1451375417503121421/918cdcc831adbf7391c8dd76bb1c3a31.webp?size=2048" alt="Hammerheadgames Discord" onerror="this.remove()"></span>
-            <span class="credit-text"><strong>Discord Hammerheadgames</strong><span>Server</span><small>discord.gg/7RSKyYpYwt</small></span>
-          </a>
-
-
-        </div>
-        <a class="credits-doc-link" href="https://docs.google.com/document/d/1oGMi7Brr09BfjMApkXv6r1UPcmTd7adRyOOmQOWRmOg/edit?usp=sharing" target="_blank" rel="noopener noreferrer">
-          <span class="credits-doc-icon">📄</span>
-          <span><strong>More Game Sites</strong><small>Link</small></span>
-        </a>
-
-        <p class="credits-scroll-note">Keep scrolling to reach the close button.</p>
-        <button class="credits-close-bottom" onclick="closeCreditsPopup()">Close Credits</button>
-      </div>
-    </div>
     <div id="tooltip" class="tooltip"></div>
     <button id="hub-sidebar-toggle" class="hub-sidebar-toggle" title="Open quick menu" onclick="toggleHubSidebar()">☰</button>
     <nav id="hub-sidebar" class="hub-sidebar closed">
@@ -429,7 +355,6 @@
       <button class="hub-sidebar-item" onclick="openMedia1()"><span class="ico">🎬</span><span>Media<small>Open cinema page</small></span></button>
 
       <button class="hub-sidebar-item" onclick="openHubUpdates()"><span class="ico">📢</span><span>Updates <span class="update-badge">NEW</span><small>See what changed</small></span></button>
-      <button class="hub-sidebar-item" onclick="openCreditsPopup()"><span class="ico">🌟</span><span>Credits<small>TikTok and Discord links</small></span></button>
       <button class="hub-sidebar-item" onclick="openSuggestions()"><span class="ico">📋</span><span>Suggestions<small>Request changes</small></span></button>
       <button class="hub-sidebar-item" onclick="toggleFullscreen()"><span class="ico">⛶</span><span>Fullscreen<small>Toggle screen mode</small></span></button>
     </nav>
@@ -472,7 +397,6 @@
         <div class="brs">
           <button class="bs b6" onclick="showLandingChoice('updates','Updates')">📢 Updates <span class="update-badge">NEW</span></button>
           <button class="bs b7" onclick="showLandingChoice('suggestions','Suggestions')">📋 Suggestions</button>
-          <button class="bs b4" onclick="openCreditsPopup()">🌟 Credits</button>
         </div>
       </div>
     </div>
@@ -669,7 +593,6 @@
         <button class="setb" onclick="document.getElementById('sp').classList.add('open')">⚙️ Settings</button>
 
         <button class="setb" onclick="openDirectGameTab('https://csclub.uwaterloo.ca/~s23adhik/myPosts/imposter.html')">🎭 Imposter Game</button>
-        <button class="setb" onclick="openCreditsPopup()">🌟 Credits</button>
 
 
 
@@ -1046,22 +969,6 @@ function openLandingActionInNewTab(action){
   w.document.write(html);
   w.document.close();
 }
-function openCreditsPopup(){
-  const modal=document.getElementById('credits-modal');
-  if(modal)modal.classList.add('open');
-  playSound('click');
-}
-function closeCreditsPopup(){
-  const modal=document.getElementById('credits-modal');
-  if(modal)modal.classList.remove('open');
-}
-function showCreditsOnStartup(){
-  const modal=document.getElementById('credits-modal');
-  if(!modal)return;
-  modal.classList.add('open');
-  const card=modal.querySelector('.credits-card');
-  if(card)card.scrollTop=0;
-}
 function initVisitorCounter(){
   const box=document.getElementById('visitor-count-number');
   if(!box)return;
@@ -1245,24 +1152,7 @@ function initFeatureExtras(){
   if(cu)cu.value=ST.get('cloakUrl')||'https://classroom.google.com/';
   if(ci)ci.value=ST.get('cloakIcon')||'https://ssl.gstatic.com/classroom/favicon.png';
   document.body.classList.remove('startup-intro-pending');
-  try{initAnimatedIntro();}catch(e){}
 }
-function runStartupIntro(){
-  document.body.classList.add('startup-intro-pending');
-  const revealLanding=()=>document.body.classList.remove('startup-intro-pending');
-  const start=()=>{
-    try{
-      document.querySelectorAll('.hammerhead-start-intro').forEach(e=>e.remove());
-      requestAnimationFrame(()=>{initAnimatedIntro();setTimeout(revealLanding,3600);});
-    }catch(e){
-      console.warn('Intro failed, retrying once',e);
-      setTimeout(()=>{try{initAnimatedIntro();setTimeout(revealLanding,3600);}catch(err){revealLanding();}},400);
-    }
-  };
-  if(document.readyState==='complete')setTimeout(start,120);
-  else window.addEventListener('load',()=>setTimeout(start,120),{once:true});
-}
-window.addEventListener('pageshow',e=>{if(e.persisted)document.body.classList.remove('startup-intro-pending');});
 
 function ensureHubSidebar(){
   if(!document.body)return;
@@ -1471,35 +1361,6 @@ function applySavedCustomTheme(){
   document.body.style.backgroundSize='400% 400%';
   syncLandingBackground();
 }
-function initAnimatedIntro(){
-  const introPhrases=['diving in','diving in','diving in','loading the depths','swimming deeper','making waves','entering the hub','surfacing soon','powering up','deep sea mode'];
-  const loadingTips=['Use the panic key if someone walks by.','Try cloak mode in settings.','Save your theme so it stays next time.','Open updates to clear the NEW badge.','Use import/export to move your setup.','Use the quick menu to jump around faster.','Try a darker theme for the best underwater look.','Set a panic site before you start playing.','Cloak mode changes the tab when you click away.','Export your settings before big changes.','Use fullscreen for a cleaner game view.','Change your trail color in Customize.','Try the Imposter Game from the game homepage.','If a game gets blocked, use the New Tab button.','Save a custom theme so it loads next time.','Check Updates to see what changed.','Use Google Classroom or Docs as cloak presets.','Turn off sound effects if you want it quieter.','Upload a background photo for a custom look.','Use reset settings if something feels broken.'];
-  const introPhrase=introPhrases[Math.floor(Math.random()*introPhrases.length)];
-  const introTip=loadingTips[Math.floor(Math.random()*loadingTips.length)];
-  const rootStyles=getComputedStyle(document.documentElement);
-  const introPrimary=(rootStyles.getPropertyValue('--primary')||ST.get('customPrimary')||'#64ffda').trim();
-  const introAccent=(rootStyles.getPropertyValue('--accent')||ST.get('customAccent')||'#00b4d8').trim();
-  const introDeep=(rootStyles.getPropertyValue('--accent-dark')||rootStyles.getPropertyValue('--accent')||ST.get('customAccent')||'#0077b6').trim();
-  document.querySelectorAll('.hammerhead-start-intro').forEach(e=>e.remove());
-  const intro=document.createElement('div');
-  intro.className='hammerhead-start-intro';
-  intro.style.cssText=`position:fixed;inset:0;z-index:100020;overflow:hidden;background:linear-gradient(180deg,color-mix(in srgb, ${introPrimary} 55%, #001233 45%) 0%,color-mix(in srgb, ${introAccent} 60%, #001233 40%) 28%,color-mix(in srgb, ${introDeep} 55%, #001233 45%) 58%,#023e8a 82%,#001233 100%);display:flex;align-items:center;justify-content:center;color:#e6f1ff;font-family:Segoe UI,system-ui,sans-serif;transition:opacity .9s ease;pointer-events:none`;
-  intro.innerHTML='<div style="position:absolute;inset:-25%;background:radial-gradient(circle at 50% 12%,rgba(202,240,248,.5),transparent 16%),radial-gradient(circle at 25% 42%,rgba(72,202,228,.22),transparent 18%),radial-gradient(circle at 78% 54%,rgba(0,119,182,.28),transparent 20%),linear-gradient(180deg,rgba(255,255,255,.10),rgba(0,29,61,.45) 58%,rgba(0,8,20,.72));animation:waterRushBg 1.45s cubic-bezier(.16,1,.3,1) forwards"></div><div style="position:absolute;inset:0;background:linear-gradient(100deg,transparent 0 20%,rgba(202,240,248,.1) 28%,transparent 38% 58%,rgba(144,224,239,.08) 66%,transparent 76%),repeating-linear-gradient(90deg,rgba(255,255,255,.06) 0 2px,transparent 2px 16px);filter:blur(5px);opacity:.58;animation:waterStreaks .55s linear infinite"></div><div style="position:absolute;top:-22%;left:12%;width:76%;height:86%;background:linear-gradient(115deg,rgba(255,255,255,.34) 0%,rgba(202,240,248,.18) 16%,transparent 34%),linear-gradient(78deg,transparent 0 26%,rgba(255,255,255,.2) 42%,transparent 58%);filter:blur(18px);opacity:.72;transform:skewX(-10deg);mix-blend-mode:screen"></div><div style="position:absolute;inset:0;background:radial-gradient(circle at 15% 78%,rgba(202,240,248,.22) 0 1.5px,transparent 2.5px),radial-gradient(circle at 84% 64%,rgba(202,240,248,.18) 0 2px,transparent 3px),radial-gradient(circle at 67% 22%,rgba(255,255,255,.16) 0 1.5px,transparent 2.5px),radial-gradient(circle at 31% 31%,rgba(255,255,255,.13) 0 2px,transparent 3px);background-size:92px 92px,130px 130px,74px 74px,112px 112px;opacity:.7;animation:waterStreaks 1.2s linear infinite"></div><div style="position:absolute;left:-10%;right:-10%;bottom:-10%;height:42%;background:radial-gradient(ellipse at 50% 0%,rgba(144,224,239,.18),transparent 52%),linear-gradient(180deg,rgba(0,119,182,.14),rgba(0,18,51,.62));filter:blur(10px);animation:waterWave 1.2s ease-in-out infinite alternate"></div><div id="intro-bubbles" style="position:absolute;inset:0;overflow:hidden"></div><div style="position:relative;text-align:center;transform:translateY(30px);animation:diveTitle 1.25s cubic-bezier(.16,1,.3,1) forwards"><div style="font-size:clamp(3.2rem,10vw,6.6rem);font-weight:900;letter-spacing:-3px;background:linear-gradient(90deg,var(--primary),var(--accent),var(--accent-dark),var(--primary));background-size:300% 300%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;filter:drop-shadow(0 24px 40px rgba(0,0,0,.46));animation:textGradient 5s ease infinite">🔨 Hammerhead Hub</div><div style="margin-top:10px;color:#caf0f8;font-weight:800;letter-spacing:.2em;text-transform:uppercase;text-shadow:0 4px 18px rgba(0,0,0,.4)">'+introPhrase+'</div><div style="margin-top:8px;color:rgba(230,241,255,.72);font-size:.72rem;font-weight:650;text-shadow:0 4px 18px rgba(0,0,0,.45)">💡 '+introTip+'</div></div>';
-  const style=document.createElement('style');
-  style.textContent='@keyframes waterRushBg{0%{transform:scale(2.1) translateY(55%);filter:blur(16px)}100%{transform:scale(1) translateY(0);filter:blur(0)}}@keyframes waterStreaks{from{transform:translateY(110px) skewY(-4deg)}to{transform:translateY(-110px) skewY(-4deg)}}@keyframes waterWave{from{transform:translateY(15px) scaleX(1.08)}to{transform:translateY(-15px) scaleX(1)}}@keyframes diveTitle{0%{opacity:0;transform:translateY(150px) scale(.78)}50%{opacity:1;transform:translateY(-24px) scale(1.07)}100%{opacity:1;transform:translateY(0) scale(1)}}@keyframes introBubbleUp{0%{transform:translateY(115vh) translateX(0) scale(.22);opacity:0}8%{opacity:.95}65%{opacity:.75}100%{transform:translateY(-24vh) translateX(var(--drift)) scale(1.9);opacity:0}}@keyframes introTinyBubble{0%{transform:translateY(105vh) translateX(0) scale(.1);opacity:0}10%{opacity:.85}100%{transform:translateY(-18vh) translateX(var(--drift)) scale(1.1);opacity:0}}';
-  document.head.appendChild(style);
-  document.body.appendChild(intro);
-  const box=intro.querySelector('#intro-bubbles');
-  for(let i=0;i<175;i++){
-    const b=document.createElement('div');
-    const tiny=i%3===0;
-    const s=tiny?3+Math.random()*14:10+Math.random()*56;
-    b.style.cssText=`--drift:${-80+Math.random()*160}px;position:absolute;left:${Math.random()*100}%;bottom:-95px;width:${s}px;height:${s}px;border-radius:50%;border:1px solid rgba(255,255,255,${tiny ? .62 : .84});background:radial-gradient(circle at 35% 28%,rgba(255,255,255,.82),rgba(255,255,255,.18) 34%,rgba(255,255,255,.06) 70%);box-shadow:0 0 ${tiny?16:34}px rgba(202,240,248,.68),inset 0 0 14px rgba(255,255,255,.26);animation:${tiny?'introTinyBubble':'introBubbleUp'} ${.6+Math.random()*1.7}s linear ${Math.random()*.72}s forwards`;
-    box.appendChild(b);
-  }
-  setTimeout(()=>{intro.style.opacity='0';setTimeout(()=>{intro.remove();style.remove();},950);},1900);
-}
-
 
 /* HUB */
 
