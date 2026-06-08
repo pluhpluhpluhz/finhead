@@ -267,7 +267,7 @@
         <div class="maint-container">
             <div class="maint-icon">🛠️</div>
             <h1 class="maint-message">Games Offline</h1>
-            <p class="maint-submessage">Unable to connect to game servers. Please try again later or check out Media.</p>
+            <p class="maint-submessage">Games are offline, try again?</p>
             <div class="maint-btn-row">
                 <button class="maint-btn maint-btn-retry" onclick="checkGameStatus()">🔄 Retry Connection</button>
                 <button class="maint-btn maint-btn-media" onclick="openMedia1()">🎬 Media</button>
@@ -281,7 +281,7 @@
 
 
     <canvas id="bg-canvas"></canvas>
-    <div id="clock-widget" title="Drag to move"><div class="time" id="clock-time">12:00</div><div class="date" id="clock-date">Loading...</div></div>
+    <div id="clock-widget" title="Drag to move" style="display:none"><div class="time" id="clock-time">12:00</div><div class="date" id="clock-date">Loading...</div></div>
     <div id="playtimer" onclick="toggleTimerVisibility()">⏱️ <span id="timer-display">0:00</span></div>
     <div id="tooltip" class="tooltip"></div>
 
@@ -313,16 +313,55 @@
       <div id="landing-actions" style="text-align:center;z-index:10">
         <h1 class="lt">👅 pleasegivemehead</h1>
         <p class="ls">Dive into my head</p>
-        <p class="ls">Screw hammerheadhub, thats for chuds</p>
         <div class="br">
-          <button class="b1" onclick="enterHub()">Continue →</button>
-          <button class="b2" onclick="toggleFullscreen()">⛶ Fullscreen</button>
+          <button class="b1" onclick="enterHub()">🎮 Games</button>
+          <button class="b2" onclick="document.getElementById('bypass-modal').style.display='flex'">📖 Bypass Tutorial</button>
           <button class="b3" onclick="openMedia1()">🎬 Media</button>
-          <button class="b2" onclick="openLandingInAboutBlank()" style="background:linear-gradient(135deg,#1a1a2e,#16213e);border-color:rgba(100,255,218,.4)">🪟 Open in Tab</button>
         </div>
         <div class="brs">
           <button class="bs b4" onclick="document.getElementById('sp').classList.toggle('open');playSound('settings')">⚙️ Settings</button>
+          <button class="bs b4" onclick="openLandingInAboutBlank()" style="background:linear-gradient(135deg,#1a1a2e,#16213e);border:2px solid rgba(100,255,218,.4)">🪟 Open in about:blank</button>
         </div>
+      </div>
+      <div style="position:absolute;bottom:0;left:0;right:0;padding:24px;text-align:center;z-index:10">
+        <p style="color:rgba(136,146,176,0.55);font-size:0.78rem;line-height:2;max-width:540px;margin:0 auto">
+          hammerheadhub is for chuds
+        </p>
+      </div>
+    </div>
+
+
+    <!-- BYPASS TUTORIAL MODAL -->
+    <div id="bypass-modal" onclick="if(event.target===this)this.style.display='none'" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.8);z-index:100010;align-items:center;justify-content:center;padding:24px;backdrop-filter:blur(10px)">
+      <div style="width:min(500px,100%);background:linear-gradient(180deg,rgba(15,23,42,.98),rgba(2,6,23,.98));border:1px solid rgba(100,255,218,.28);border-radius:24px;padding:36px;box-shadow:0 30px 90px rgba(0,0,0,.65)">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px">
+          <h2 style="color:var(--primary);font-size:1.4rem;margin:0">📖 Bypass Tutorial</h2>
+          <button onclick="document.getElementById('bypass-modal').style.display='none'" style="background:rgba(255,107,107,.1);border:none;color:#ff6b6b;font-size:20px;cursor:pointer;width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center">✕</button>
+        </div>
+        <p style="color:var(--text-secondary);font-size:.9rem;margin-bottom:24px;line-height:1.6">If this site ever gets blocked, you can still play on pleasegivemehead</p>
+        <div style="display:flex;flex-direction:column;gap:16px;margin-bottom:28px">
+          <div style="display:flex;gap:16px;align-items:flex-start">
+            <span style="background:linear-gradient(135deg,var(--primary),var(--accent));color:#0a192f;font-weight:800;font-size:.85rem;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0">1</span>
+            <p style="color:var(--text-primary);margin:0;line-height:1.6;padding-top:4px">Click on <span style="color:var(--primary);font-weight:600">"Copy Code"</span> below</p>
+          </div>
+          <div style="display:flex;gap:16px;align-items:flex-start">
+            <span style="background:linear-gradient(135deg,var(--primary),var(--accent));color:#0a192f;font-weight:800;font-size:.85rem;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0">2</span>
+            <p style="color:var(--text-primary);margin:0;line-height:1.6;padding-top:4px">Go to <span style="color:var(--primary);font-weight:600">w3schools.com</span> (or any other HTML online viewer)</p>
+          </div>
+          <div style="display:flex;gap:16px;align-items:flex-start">
+            <span style="background:linear-gradient(135deg,var(--primary),var(--accent));color:#0a192f;font-weight:800;font-size:.85rem;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0">3</span>
+            <p style="color:var(--text-primary);margin:0;line-height:1.6;padding-top:4px">Click <span style="color:var(--primary);font-weight:600">"Try it yourself"</span></p>
+          </div>
+          <div style="display:flex;gap:16px;align-items:flex-start">
+            <span style="background:linear-gradient(135deg,var(--primary),var(--accent));color:#0a192f;font-weight:800;font-size:.85rem;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0">4</span>
+            <p style="color:var(--text-primary);margin:0;line-height:1.6;padding-top:4px">Paste in the code on the left</p>
+          </div>
+          <div style="display:flex;gap:16px;align-items:flex-start">
+            <span style="background:linear-gradient(135deg,var(--primary),var(--accent));color:#0a192f;font-weight:800;font-size:.85rem;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0">5</span>
+            <p style="color:var(--text-primary);margin:0;line-height:1.6;padding-top:4px">Click run &amp; profit</p>
+          </div>
+        </div>
+        <button onclick="copyPageCode()" id="copy-code-btn" style="width:100%;padding:14px;background:linear-gradient(135deg,var(--primary),var(--accent));color:#0a192f;border:none;border-radius:12px;font-size:1rem;font-weight:800;cursor:pointer;transition:all .2s">📋 Copy Code</button>
       </div>
     </div>
 
@@ -344,7 +383,39 @@
     </div>
 
 
-    <!-- SETTINGS -->
+
+    <!-- MEDIA OVERLAY -->
+    <div id="mo" style="display:none;position:fixed;inset:0;background:#000;z-index:9999;flex-direction:column">
+      <div style="flex-shrink:0;display:flex;align-items:center;gap:10px;padding:12px 16px;background:rgba(10,25,47,.97);border-bottom:1px solid rgba(100,255,218,.18)">
+        <button onclick="closeMedia()" style="background:linear-gradient(135deg,#64ffda,#00b4d8);color:#0a192f;border:none;border-radius:10px;padding:9px 16px;font-weight:800;cursor:pointer;white-space:nowrap;font-size:.875rem">← Back</button>
+        <input id="mo-url" style="flex:1;background:rgba(255,255,255,.06);border:1px solid rgba(100,255,218,.25);border-radius:10px;padding:9px 16px;color:#e6f1ff;font-size:.9rem;outline:none;min-width:0" placeholder="Enter a URL, e.g. https://example.com" onkeydown="if(event.key==='Enter')moLoadUrl()">
+        <button onclick="moLoadUrl()" style="background:linear-gradient(135deg,#0077b6,#00b4d8);color:#fff;border:none;border-radius:10px;padding:9px 18px;font-weight:700;cursor:pointer;white-space:nowrap;font-size:.875rem">Show Content</button>
+        <button onclick="moOpenInBlank()" style="background:rgba(255,255,255,.07);color:#e6f1ff;border:1px solid rgba(100,255,218,.25);border-radius:10px;padding:9px 14px;font-weight:600;cursor:pointer;white-space:nowrap;font-size:.875rem">🪟 Open in about:blank</button>
+      </div>
+      <div style="flex-shrink:0;display:flex;gap:10px;padding:10px 16px;background:rgba(10,25,47,.9);border-bottom:1px solid rgba(100,255,218,.1)">
+        <button onclick="moSetPreset('https://coreflix.tv/')" style="background:rgba(255,255,255,.05);border:1px solid rgba(100,255,218,.2);border-radius:10px;padding:8px 18px;color:#e6f1ff;font-weight:600;cursor:pointer;font-size:.85rem">🎬 Coreflix</button>
+        <button onclick="moSetPreset('https://www.rivestream.app/')" style="background:rgba(255,255,255,.05);border:1px solid rgba(100,255,218,.2);border-radius:10px;padding:8px 18px;color:#e6f1ff;font-weight:600;cursor:pointer;font-size:.85rem">🎬 Rive</button>
+        <button onclick="moSetPreset('https://flickystream.su/')" style="background:rgba(255,255,255,.05);border:1px solid rgba(100,255,218,.2);border-radius:10px;padding:8px 18px;color:#e6f1ff;font-weight:600;cursor:pointer;font-size:.85rem">🎬 FlickyStream</button>
+      </div>
+      <div style="flex:1;position:relative;background:#000">
+        <div id="mo-placeholder" style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;color:#8892b0">
+          <div style="font-size:3rem;opacity:.4">🎬</div>
+          <p style="font-size:.95rem;opacity:.6">Enter a URL or pick a preset above</p>
+        </div>
+        <iframe id="mo-frame" style="display:none;position:absolute;inset:0;width:100%;height:100%;border:none;background:#000" allowfullscreen allow="storage-access *; autoplay; fullscreen"></iframe>
+      </div>
+    </div>
+
+    <!-- IMPOSTER GAME OVERLAY -->
+    <div id="ig" style="display:none;position:fixed;inset:0;background:#000;z-index:9999;flex-direction:column">
+      <div style="flex-shrink:0;display:flex;align-items:center;gap:10px;padding:12px 16px;background:rgba(10,25,47,.97);border-bottom:1px solid rgba(255,80,80,.3)">
+        <button onclick="closeImposter()" style="background:linear-gradient(135deg,#64ffda,#00b4d8);color:#0a192f;border:none;border-radius:10px;padding:9px 16px;font-weight:800;cursor:pointer;white-space:nowrap;font-size:.875rem">← Back</button>
+        <span style="color:#ff6b6b;font-weight:800;font-size:1rem;flex:1;text-align:center">🎭 Imposter Game</span>
+      </div>
+      <div style="flex:1;position:relative;background:#000">
+        <iframe id="ig-frame" src="https://csclub.uwaterloo.ca/~s23adhik/myPosts/imposter.html" style="position:absolute;inset:0;width:100%;height:100%;border:none;background:#000" allowfullscreen allow="storage-access *; autoplay; fullscreen"></iframe>
+      </div>
+    </div>
     <div id="sp">
       <div class="stit">⚙️ Settings<button class="scls" onclick="document.getElementById('sp').classList.remove('open');playSound('settings-close')">✕</button></div>
       <div class="settings-tabs">
@@ -367,10 +438,7 @@
             </div>
           </div>
 
-          <div class="ssec">
-            <div class="slbl">🔊 Audio</div>
-            <div class="toggle-container"><span class="toggle-label">Sound Effects</span><div class="toggle-switch" id="sfx-toggle" onclick="toggleSFX()"><div class="toggle-slider"></div></div></div>
-          </div>
+          <div id="sfx-toggle" style="display:none"></div>
           <div class="ssec">
             <div class="slbl">🔧 Maintenance</div>
             <button class="sap" onclick="checkGameStatus()">Check Game Status</button>
@@ -434,8 +502,7 @@
 
         <button class="setb" onclick="goMainHomepage()">🏠 Home</button>
         <button class="setb" onclick="document.getElementById('sp').classList.add('open')">⚙️ Settings</button>
-
-        <button class="setb" onclick="openDirectGameTab('https://csclub.uwaterloo.ca/~s23adhik/myPosts/imposter.html')">🎭 Imposter Game</button>
+        <button class="setb" onclick="openImposter()">🎭 Imposter Game</button>
 
 
 
@@ -500,7 +567,7 @@ const ACHIEVEMENTS=[
   {id:'fav',name:'Curator',check:()=>favs.length>=5},
   {id:'rater',name:'Critic',check:()=>Object.keys(ratings).length>=10}
 ];
-const GAMES=( [['Imposter Game','other','https://csclub.uwaterloo.ca/~s23adhik/myPosts/imposter.html',null,0,'Imposter Game',1,true],['Test','other','__TEST_LUMIN__',null,0,'Lumin test page',1,true]] ).map(g=>({n:g[0],c:g[1],u:g[2],i:g[3],plays:g[4]||0,d:g[5]||g[0],p:g[6]||1,isNew:g[7]||false,broken:g[8]||false,rating:0,played:false}));
+const GAMES=( [['Test','other','__TEST_LUMIN__',null,0,'Lumin test page',1,true]] ).map(g=>({n:g[0],c:g[1],u:g[2],i:g[3],plays:g[4]||0,d:g[5]||g[0],p:g[6]||1,isNew:g[7]||false,broken:g[8]||false,rating:0,played:false}));
 
 
 /* STATE */
@@ -647,7 +714,6 @@ async function checkGameStatus(showToast=true) {
             showMaintenance();
         } else {
             hideMaintenance();
-            if (showToast) showErrorToast('Games are online! ✓');
         }
         
     } catch (e) {
@@ -663,8 +729,7 @@ async function checkGameStatus(showToast=true) {
 function showMaintenance() {
     const maintPage = document.getElementById('maintenance-page');
     if (maintPage) maintPage.classList.add('active');
-    setStatusDisplays('Games are currently down', 'offline');
-    showErrorToast('Games are currently down');
+    setStatusDisplays('Games are offline', 'offline');
 }
 
 
@@ -1165,11 +1230,75 @@ function openUrlInAboutBlank(url,title='New Tab'){
   w.document.close();
 }
 function openMedia1(){
+  const mo=document.getElementById('mo');
+  const frame=document.getElementById('mo-frame');
+  const placeholder=document.getElementById('mo-placeholder');
+  const urlInput=document.getElementById('mo-url');
+  frame.src='';
+  frame.style.display='none';
+  placeholder.style.display='flex';
+  urlInput.value='';
+  mo.style.display='flex';
+  if(fishCanvas)fishCanvas.style.display='none';
+}
+function closeMedia(){
+  const mo=document.getElementById('mo');
+  const frame=document.getElementById('mo-frame');
+  frame.src='';
+  frame.style.display='none';
+  mo.style.display='none';
+  if(fishCanvas)fishCanvas.style.display='block';
+}
+function openImposter(){
+  document.getElementById('ig').style.display='flex';
+  if(fishCanvas)fishCanvas.style.display='none';
+}
+function closeImposter(){
+  document.getElementById('ig').style.display='none';
+  if(fishCanvas)fishCanvas.style.display='block';
+}
+function moLoadUrl(){
+  let url=(document.getElementById('mo-url').value||'').trim();
+  if(!url)return;
+  if(!/^https?:\/\//i.test(url))url='https://'+url;
+  const frame=document.getElementById('mo-frame');
+  frame.src=url;
+  frame.style.display='block';
+  document.getElementById('mo-placeholder').style.display='none';
+}
+function moSetPreset(url){
+  document.getElementById('mo-url').value=url;
+  const frame=document.getElementById('mo-frame');
+  frame.src=url;
+  frame.style.display='block';
+  document.getElementById('mo-placeholder').style.display='none';
+}
+function moOpenInBlank(){
+  let url=(document.getElementById('mo-url').value||'').trim();
+  if(!url)return;
+  if(!/^https?:\/\//i.test(url))url='https://'+url;
+  const safeUrl=url.replace(/&/g,'&amp;').replace(/"/g,'&quot;');
   const w=window.open('about:blank','_blank');
   if(!w)return;
   w.document.open();
-  w.document.write(`<!DOCTYPE html><html><head><title>Media</title><style>*{margin:0;padding:0;box-sizing:border-box}html,body{width:100%;height:100%;background:#000;overflow:hidden;font-family:Segoe UI,system-ui,sans-serif}.shell{width:100%;height:100%;display:flex;flex-direction:column}.bar{height:56px;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 14px;background:rgba(10,25,47,.96);border-bottom:1px solid rgba(100,255,218,.18);color:#e6f1ff}.ttl{font-weight:800;color:#64ffda;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.acts{display:flex;gap:10px;align-items:center}.bar button{border:none;border-radius:10px;padding:8px 14px;font-weight:800;cursor:pointer}.back{background:linear-gradient(135deg,#64ffda,#00b4d8);color:#0a192f}.close{background:rgba(255,255,255,.08);color:#fff;border:1px solid rgba(100,255,218,.18)}.stage{position:relative;flex:1}.stage iframe{position:absolute;inset:0;width:100%;height:100%;border:none;background:#000}#L{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);color:#e50914;font-size:24px;font-family:sans-serif;z-index:2}</style></head><body><div class="shell"><div class="bar"><button class="back" onclick="if(window.opener&&!window.opener.closed){window.opener.focus();window.close()}else{const w=window.open('about:blank','_blank');if(w){w.document.open();w.document.write(localStorage.getItem('pleasegivemeheadHTML')||'');w.document.close();}}">← Back to Landing</button><div class="ttl">🎬 Media</div><div class="acts"><button class="close" onclick="window.close()">✕ Close</button></div></div><div class="stage"><div id="L">Loading...</div><iframe src="https://cinemaos.tech" allowfullscreen onload="document.getElementById('L').style.display='none'"></iframe></div></div></body></html>`);
+  w.document.write('<!DOCTYPE html><html><head><title>Media</title><style>*{margin:0;padding:0;box-sizing:border-box}html,body{width:100%;height:100%;overflow:hidden;background:#000}iframe{width:100%;height:100%;border:none;background:#000}</style></head><body><iframe src="'+safeUrl+'" allowfullscreen allow="storage-access *; autoplay; fullscreen"></iframe></body></html>');
   w.document.close();
+}
+
+function copyPageCode(){
+  const btn=document.getElementById('copy-code-btn');
+  const html='<!DOCTYPE html>'+document.documentElement.outerHTML;
+  if(navigator.clipboard&&navigator.clipboard.writeText){
+    navigator.clipboard.writeText(html).then(()=>{
+      if(btn){btn.textContent='✅ Copied!';setTimeout(()=>{btn.textContent='📋 Copy Code';},2000);}
+    }).catch(()=>{
+      const ta=document.createElement('textarea');ta.value=html;document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);
+      if(btn){btn.textContent='✅ Copied!';setTimeout(()=>{btn.textContent='📋 Copy Code';},2000);}
+    });
+  } else {
+    const ta=document.createElement('textarea');ta.value=html;document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);
+    if(btn){btn.textContent='✅ Copied!';setTimeout(()=>{btn.textContent='📋 Copy Code';},2000);}
+  }
 }
 function toggleTimerVisibility(){const t=document.getElementById('playtimer');t.classList.toggle('visible');ST.set('timerVisible',t.classList.contains('visible'));}
 
@@ -1210,7 +1339,7 @@ function showTooltip(e,text){const t=document.getElementById('tooltip');t.textCo
 function hideTooltip(){document.getElementById('tooltip').classList.remove('show');}
 function isHtmlSourceUrl(url){return url.startsWith(GH)||url.startsWith(GH3)||/\.html?(?:[?#].*)?$/i.test(url)||/\/index\.html?(?:[?#].*)?$/i.test(url);} 
 function isEmbedFriendlyUrl(url){return url.startsWith(BD)||url.startsWith(PC)||url.startsWith(CG)||url.startsWith(GH)||url.startsWith(GH3);}
-function shouldOpenInNewTab(url){return url==='https://csclub.uwaterloo.ca/~s23adhik/myPosts/imposter.html';} 
+function shouldOpenInNewTab(url){return false;} 
 function buildGameHomeTabHtml(url,title){return `<!DOCTYPE html><html><head><meta charset="UTF-8"><title>${title}</title><style>*{margin:0;padding:0;box-sizing:border-box}html,body{width:100%;height:100%;overflow:hidden;background:#000;font-family:Segoe UI,system-ui,sans-serif}.tb{height:54px;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 14px;background:rgba(10,25,47,.96);border-bottom:1px solid rgba(100,255,218,.18);color:#e6f1ff}.ttl{font-weight:800;color:#64ffda;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.acts{display:flex;gap:10px;align-items:center}.tb button{border:none;border-radius:10px;padding:8px 14px;font-weight:700;cursor:pointer}.back{background:linear-gradient(135deg,#64ffda,#00b4d8);color:#0a192f}.reload{background:linear-gradient(135deg,#0077b6,#00b4d8);color:#fff}iframe{width:100%;height:calc(100% - 54px);border:none;background:#000}</style></head><body><div class="tb"><button class="back" onclick="if(window.opener&&!window.opener.closed){window.opener.focus();window.close()}else{history.back()}">← Back to Hub</button><div class="ttl">${title}</div><div class="acts"><button class="reload" onclick="document.getElementById('gfShell').src='${url}'">↻ Reload</button></div></div><iframe id="gfShell" src="${url}" allowfullscreen allow="storage-access *; autoplay; fullscreen"></iframe></body></html>`;}
 function openDirectGameTab(url){try{const w=window.open('about:blank','_blank');if(w){const game=(GAMES.find(g=>g.u===url)||{n:'Game'});w.document.open();w.document.write(buildGameHomeTabHtml(url,game.n));w.document.close();return;}}catch(e){}window.open(url,'_blank');}
 function showDirectLaunchOverlay(name,url){const frame=document.getElementById('gf');frame.src='';frame.srcdoc=`<!DOCTYPE html><html><head><meta charset="UTF-8"><style>html,body{margin:0;height:100%;background:#000;color:#e6f1ff;font-family:Segoe UI,system-ui,sans-serif;overflow:hidden}body{position:relative}.bg{position:absolute;inset:0;background:radial-gradient(circle at 50% 20%,rgba(0,180,216,.18),transparent 35%),radial-gradient(circle at 80% 80%,rgba(100,255,218,.12),transparent 30%),linear-gradient(180deg,#08111f 0%,#000 100%)}.wrap{position:relative;z-index:1;height:100%;display:flex;align-items:center;justify-content:center;padding:28px}.panel{width:min(1100px,100%);height:min(78vh,760px);border:1px solid rgba(100,255,218,.2);border-radius:18px;background:linear-gradient(180deg,rgba(18,30,49,.88),rgba(0,0,0,.94));box-shadow:0 20px 60px rgba(0,0,0,.45);display:flex;flex-direction:column;overflow:hidden}.bar{display:flex;align-items:center;justify-content:space-between;padding:14px 18px;border-bottom:1px solid rgba(100,255,218,.14);background:rgba(10,25,47,.72)}.title{font-size:15px;font-weight:800;color:#64ffda;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:70%}.pill{font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#ffd166;background:rgba(255,209,102,.12);border:1px solid rgba(255,209,102,.24);padding:6px 10px;border-radius:999px}.stage{flex:1;display:flex;align-items:center;justify-content:center;padding:28px}.inner{text-align:center;max-width:640px}.spinner{width:64px;height:64px;border-radius:50%;border:4px solid rgba(255,255,255,.12);border-top-color:#64ffda;margin:0 auto 18px;animation:spin 1s linear infinite}.headline{font-size:28px;font-weight:900;margin-bottom:10px}.sub{font-size:15px;line-height:1.6;color:#b7c7e6;margin-bottom:22px}.actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}.btn{display:inline-block;padding:12px 22px;border-radius:12px;background:linear-gradient(135deg,#0077b6,#00b4d8);color:#fff;text-decoration:none;font-weight:800;box-shadow:0 10px 24px rgba(0,180,216,.25)}.ghost{display:inline-block;padding:12px 22px;border-radius:12px;background:rgba(255,255,255,.04);border:1px solid rgba(100,255,218,.18);color:#cfe6ff;text-decoration:none;font-weight:700}.url{margin-top:16px;font-size:12px;color:#7f93b5;word-break:break-all}@keyframes spin{to{transform:rotate(360deg)}}</style></head><body><div class="bg"></div><div class="wrap"><div class="panel"><div class="bar"><div class="title">🎮 ${name}</div><div class="pill">Opened in new tab</div></div><div class="stage"><div class="inner"><div class="spinner"></div><div class="headline">Opening ${name}</div><div class="sub">If the game gets blocked, use the button below to open it in a new tab instead.</div><div class="actions"><a class="btn" href="${url}" target="_blank" rel="noopener noreferrer">↗ Open game</a><a class="ghost" href="javascript:history.back()">Close</a></div><div class="url">${url}</div></div></div></div></div></body></html>`;document.getElementById('go').classList.add('act');if(fishCanvas)fishCanvas.style.display='none';}
