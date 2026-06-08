@@ -313,13 +313,15 @@
       <div id="landing-actions" style="text-align:center;z-index:10">
         <h1 class="lt">👅 pleasegivemehead</h1>
         <p class="ls">Dive into my head</p>
+        <p class="ls">Screw hammerheadhub, thats for chuds</p>
         <div class="br">
           <button class="b1" onclick="enterHub()">Continue →</button>
           <button class="b2" onclick="toggleFullscreen()">⛶ Fullscreen</button>
           <button class="b3" onclick="openMedia1()">🎬 Media</button>
-
+          <button class="b2" onclick="openLandingInAboutBlank()" style="background:linear-gradient(135deg,#1a1a2e,#16213e);border-color:rgba(100,255,218,.4)">🪟 Open in Tab</button>
         </div>
         <div class="brs">
+          <button class="bs b4" onclick="document.getElementById('sp').classList.toggle('open');playSound('settings')">⚙️ Settings</button>
         </div>
       </div>
     </div>
@@ -387,35 +389,7 @@
           </div>
         </div>
         <div id="tab-customization" class="tab-panel">
-          <div class="ssec">
-            <div class="slbl">🎨 Theme</div>
-            <div class="tg">
-              <div class="td ton" data-t="ocean"   style="background:linear-gradient(135deg,#64ffda,#0077b6)" onmouseenter="previewTheme('ocean')" onmouseleave="endThemePreview()" onclick="applyTheme('ocean')"   title="Ocean"></div>
-              <div class="td"     data-t="nebula"  style="background:linear-gradient(135deg,#da64ff,#7700b6)" onmouseenter="previewTheme('nebula')" onmouseleave="endThemePreview()" onclick="applyTheme('nebula')"  title="Nebula"></div>
-              <div class="td"     data-t="inferno" style="background:linear-gradient(135deg,#ff6b6b,#b20710)" onmouseenter="previewTheme('inferno')" onmouseleave="endThemePreview()" onclick="applyTheme('inferno')" title="Inferno"></div>
-              <div class="td"     data-t="forest"  style="background:linear-gradient(135deg,#64ff64,#1a7a1a)" onmouseenter="previewTheme('forest')" onmouseleave="endThemePreview()" onclick="applyTheme('forest')"  title="Forest"></div>
-              <div class="td"     data-t="sunset"  style="background:linear-gradient(135deg,#ffb347,#e67e00)" onmouseenter="previewTheme('sunset')" onmouseleave="endThemePreview()" onclick="applyTheme('sunset')"  title="Sunset"></div>
-              <div class="td"     data-t="arctic"  style="background:linear-gradient(135deg,#e0ffff,#00ced1)" onmouseenter="previewTheme('arctic')" onmouseleave="endThemePreview()" onclick="applyTheme('arctic')"  title="Arctic"></div>
-              <div class="td"     data-t="galaxy"  style="background:linear-gradient(135deg,#9b59b6,#2c3e50)" onmouseenter="previewTheme('galaxy')" onmouseleave="endThemePreview()" onclick="applyTheme('galaxy')"  title="Galaxy"></div>
-              <div class="td"     data-t="toxic"   style="background:linear-gradient(135deg,#39ff14,#006400)" onmouseenter="previewTheme('toxic')" onmouseleave="endThemePreview()" onclick="applyTheme('toxic')"   title="Toxic"></div>
-              <div class="td"     data-t="rose"    style="background:linear-gradient(135deg,#ffb6c1,#db7093)" onmouseenter="previewTheme('rose')" onmouseleave="endThemePreview()" onclick="applyTheme('rose')"    title="Rose"></div>
-              <div class="td"     data-t="amber"   style="background:linear-gradient(135deg,#ffbf00,#ff8c00)" onmouseenter="previewTheme('amber')" onmouseleave="endThemePreview()" onclick="applyTheme('amber')"   title="Amber"></div>
-              <div class="td"     data-t="cosmic"  style="background:linear-gradient(135deg,#ff00ff,#00ffff)" onmouseenter="previewTheme('cosmic')" onmouseleave="endThemePreview()" onclick="applyTheme('cosmic')"  title="Cosmic"></div>
-              <div class="td"     data-t="shadow"  style="background:linear-gradient(135deg,#708090,#2f4f4f)" onmouseenter="previewTheme('shadow')" onmouseleave="endThemePreview()" onclick="applyTheme('shadow')"  title="Shadow"></div>
-              <div class="td"     data-t="mono"    style="background:linear-gradient(135deg,#ffffff,#333333)" onmouseenter="previewTheme('mono')" onmouseleave="endThemePreview()" onclick="applyTheme('mono')"    title="Mono B&amp;W"></div>
-              <div class="td"     data-t="deepOcean" style="background:linear-gradient(135deg,#001233,#0077b6)" onmouseenter="previewTheme('deepOcean')" onmouseleave="endThemePreview()" onclick="applyTheme('deepOcean')" title="Deep Ocean"></div>
-              <div class="td"     data-t="neonShark" style="background:linear-gradient(135deg,#64ffda,#00ff88)" onmouseenter="previewTheme('neonShark')" onmouseleave="endThemePreview()" onclick="applyTheme('neonShark')" title="Neon Shark"></div>
-              <div class="td"     data-t="midnight" style="background:linear-gradient(135deg,#020617,#334155)" onmouseenter="previewTheme('midnight')" onmouseleave="endThemePreview()" onclick="applyTheme('midnight')" title="Midnight"></div>
-              <div class="td"     data-t="schoolMode" style="background:linear-gradient(135deg,#1d4ed8,#22c55e)" onmouseenter="previewTheme('schoolMode')" onmouseleave="endThemePreview()" onclick="applyTheme('schoolMode')" title="School Mode"></div>
-              <div class="td"     data-t="purpleGlow" style="background:linear-gradient(135deg,#7c3aed,#ec4899)" onmouseenter="previewTheme('purpleGlow')" onmouseleave="endThemePreview()" onclick="applyTheme('purpleGlow')" title="Purple Glow"></div>
-            </div>
-            <div style="margin-top:14px">
-              <input class="sin" id="custom-primary" placeholder="Primary color, like #64ffda">
-              <input class="sin" id="custom-accent" placeholder="Accent color, like #00b4d8">
-              <button class="sap" onclick="saveCustomTheme()">Save Custom Theme</button>
-              <button class="sap" onclick="applySavedCustomTheme()">Use Custom Theme</button>
-            </div>
-          </div>
+
           <div class="ssec">
             <div class="slbl">🕶️ Cloak</div>
             <input class="sin" id="cloak-title" placeholder="Tab title, like Google Classroom">
@@ -429,81 +403,23 @@
             <button class="sap" onclick="applyCloakPreset('drive')">Google Drive</button>
             <button class="sap" onclick="applyCloakPreset('normal')">pleasegivemehead</button>
           </div>
-          <div class="ssec">
-            <div class="slbl">🖼 Background Animation</div>
-            <select class="sin" id="bg-anim" onchange="setBackgroundAnim(this.value)">
-              <option value="none">None</option>
-              <option value="matrix">Matrix Rain</option>
-              <option value="starfield">Starfield</option>
-              <option value="aurora">Aurora</option>
-              <option value="lava">Lava Lamp</option>
-              <option value="cherry">Cherry Blossoms</option>
-              <option value="rain">Rain</option>
-              <option value="fireflies">Fireflies</option>
-              <option value="bubbles">🫧 Bubbles</option>
-              <option value="hexagons">⬡ Hexagons</option>
-              <option value="particles">✦ Particles</option>
-              <option value="snowfall">❄️ Snowfall</option>
-            </select>
-          </div>
-          <div class="ssec">
-            <div class="slbl">📷 Background Photo</div>
-            <input type="file" id="bg-photo-input" accept="image/*" style="display:none" onchange="loadBgPhoto(this)">
-            <button class="sap" onclick="document.getElementById('bg-photo-input').click()">📷 Upload Photo</button>
-            <div id="bg-opacity-container" style="display:none;margin-top:8px">
-              <div class="color-slider-container">
-                <span class="color-slider-label">Animation overlay: <span id="bg-opacity-val">40</span>%</span>
-                <input type="range" class="count-slider" id="bg-opacity" min="0" max="80" value="40" oninput="updateBgOpacity(this.value)">
-              </div>
-            </div>
-            <button class="sap" id="bg-photo-remove" style="display:none;background:var(--danger)" onclick="removeBgPhoto()">🗑 Remove Photo</button>
-          </div>
-          <div class="ssec">
-            <div class="slbl">🎆 Trail Type</div>
-            <select class="sin" id="trail-select" onchange="setTrailType(this.value)">
-              <option value="bubble">🫧 Bubble</option>
-              <option value="glow">✨ Glow Orb</option>
-              <option value="comet">☄️ Comet</option>
-              <option value="rainbow">🌈 Rainbow</option>
-              <option value="star">⭐ Star</option>
-              <option value="snow">❄️ Snow</option>
-              <option value="fire">🔥 Fire</option>
-              <option value="ripple">🔵 Ripple</option>
-              <option value="lightning">⚡ Lightning</option>
-              <option value="heart">❤️ Heart</option>
-              <option value="leaf">🍃 Leaf</option>
-              <option value="petal">🌸 Petal</option>
-              <option value="matrix">💻 Matrix</option>
-              <option value="sparkle">✨ Sparkle</option>
-              <option value="neon">👾 Neon</option>
-              <option value="fish">🐟 Fish</option>
-            </select>
-            <div class="toggle-container" style="margin-top:12px">
-              <span class="toggle-label">Enable Trail</span>
-              <div class="toggle-switch active" id="trail-toggle" onclick="toggleTrail()"><div class="toggle-slider"></div></div>
-            </div>
-          </div>
-          <div class="ssec">
-            <div class="slbl">🎨 Trail Color</div>
-            <div class="color-slider-container"><span class="color-slider-label">Hue</span><input type="range" class="hue-slider" id="trail-hue" min="0" max="360" value="180" oninput="updateTrailColor()"></div>
-            <div class="color-slider-container"><span class="color-slider-label">Saturation</span><input type="range" class="sat-slider" id="trail-sat" min="30" max="100" value="100" oninput="updateTrailColor()"></div>
-            <div class="color-slider-container"><span class="color-slider-label">Brightness</span><input type="range" class="sat-slider" id="trail-lit" min="30" max="90" value="60" oninput="updateTrailColor()"></div>
-            <div class="color-preview-big" id="trail-color-preview"></div>
-            <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:4px">
-              <button class="sap" style="flex:1;margin-bottom:0;padding:8px;font-size:.75rem" onclick="setTrailPreset(180,100,60)">Cyan</button>
-              <button class="sap" style="flex:1;margin-bottom:0;padding:8px;font-size:.75rem;background:linear-gradient(135deg,#ff00ff,#aa00aa)" onclick="setTrailPreset(300,100,60)">Magenta</button>
-              <button class="sap" style="flex:1;margin-bottom:0;padding:8px;font-size:.75rem;background:linear-gradient(135deg,#ff8c00,#cc6600)" onclick="setTrailPreset(30,100,60)">Orange</button>
-              <button class="sap" style="flex:1;margin-bottom:0;padding:8px;font-size:.75rem;background:linear-gradient(135deg,#39ff14,#008800)" onclick="setTrailPreset(110,100,55)">Green</button>
-              <button class="sap" style="flex:1;margin-bottom:0;padding:8px;font-size:.75rem;background:linear-gradient(135deg,#ff4444,#aa0000)" onclick="setTrailPreset(0,100,60)">Red</button>
-              <button class="sap" style="flex:1;margin-bottom:0;padding:8px;font-size:.75rem;background:linear-gradient(135deg,#ffffff,#aaaaaa);color:#222" onclick="setTrailPreset(0,0,90)">White</button>
-            </div>
-          </div>
-          <div class="ssec">
-            <div class="slbl">🐟 Fish Settings</div>
-            <div class="color-slider-container"><span class="color-slider-label">Fish Count: <span id="fc-val">8</span></span><input type="range" class="count-slider" id="fish-count" min="3" max="20" value="8" oninput="updateFishCount(this.value)"></div>
-            <div class="color-slider-container"><span class="color-slider-label">Fish Hue</span><input type="range" class="hue-slider" id="fish-hue" min="0" max="360" value="180" oninput="updateFishColor(this.value)"></div>
-            <div class="color-preview-big" id="fish-color-preview"></div>
-          </div>
+          <!-- hidden stubs so JS references don't throw -->
+          <input type="file" id="bg-photo-input" accept="image/*" style="display:none" onchange="loadBgPhoto(this)">
+          <select id="bg-anim" style="display:none"></select>
+          <span id="bg-opacity-val" style="display:none">40</span>
+          <input type="range" id="bg-opacity" style="display:none" value="40">
+          <div id="bg-opacity-container" style="display:none"></div>
+          <button id="bg-photo-remove" style="display:none" onclick="removeBgPhoto()"></button>
+          <select id="trail-select" style="display:none"></select>
+          <div id="trail-toggle" style="display:none"><div class="toggle-slider"></div></div>
+          <input type="range" id="trail-hue" style="display:none" value="180">
+          <input type="range" id="trail-sat" style="display:none" value="100">
+          <input type="range" id="trail-lit" style="display:none" value="60">
+          <div id="trail-color-preview" style="display:none"></div>
+          <input type="range" id="fish-count" style="display:none" value="8">
+          <input type="range" id="fish-hue" style="display:none" value="180">
+          <span id="fc-val" style="display:none">8</span>
+          <div id="fish-color-preview" style="display:none"></div>
         </div>
       </div>
     </div>
@@ -1210,7 +1126,6 @@ function enterHub(){
   lastTrailY=-9999;
   if(fishCanvas)fishCanvas.style.display='none';
   initHomepageTest();
-  setTimeout(showSettingsReminder,650);
 }
 function goMainHomepage(){
   playSound('click');
