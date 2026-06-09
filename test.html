@@ -1232,172 +1232,60 @@ function openUrlInAboutBlank(url,title='New Tab'){
   w.document.close();
 }
 function openMedia1(){
-  playSound('open');
+  const frame = document.getElementById('mo-frame');
 
-  const w = window.open('about:blank', '_blank');
-  if (!w) {
-    showErrorToast('Allow popups to open Media');
-    return;
+  const safeUrl = url
+    .replace(/&/g, '&amp;')
+    .replace(/"/g, '&quot;');
+
+  frame.srcdoc = `
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        html,body{
+          width:100%;
+          height:100%;
+          overflow:hidden;
+          background:#000;
+        }
+        iframe{
+          width:100%;
+          height:100%;
+          border:none;
+          background:#000;
+        }
+      </style>
+    </head>
+    <body>
+      <iframe
+        src="${safeUrl}"
+        allowfullscreen
+        allow="storage-access *; autoplay; fullscreen">
+      </iframe>
+    </body>
+    </html>
+  `;
+
+  frame.style.display = 'block';
+  document.getElementById('mo-placeholder').style.display = 'none';
+}
+
+function moLoadUrl() {
+  let url = (document.getElementById('mo-url').value || '').trim();
+  if (!url) return;
+
+  if (!/^https?:\/\//i.test(url)) {
+    url = 'https://' + url;
   }
 
-  w.document.open();
-  w.document.write(`
-<!DOCTYPE html>
-<html>
-<head>
-<title>Media</title>
-<style>
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
+  loadMediaInBlank(url);
 }
-html,body{
-  width:100%;
-  height:100%;
-  background:#000;
-  overflow:hidden;
-  font-family:Segoe UI,system-ui,sans-serif;
-}
-.shell{
-  width:100%;
-  height:100%;
-  display:flex;
-  flex-direction:column;
-}
-.bar{
-  height:56px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:12px;
-  padding:10px 14px;
-  background:rgba(10,25,47,.96);
-  border-bottom:1px solid rgba(100,255,218,.18);
-  color:#e6f1ff;
-}
-.ttl{
-  font-weight:800;
-  color:#64ffda;
-  white-space:nowrap;
-  overflow:hidden;
-  text-overflow:ellipsis;
-}
-.acts{
-  display:flex;
-  gap:10px;
-  align-items:center;
-}
-.bar button{
-  border:none;
-  border-radius:10px;
-  padding:8px 14px;
-  font-weight:800;
-  cursor:pointer;
-}
-.back{
-  background:linear-gradient(135deg,#64ffda,#00b4d8);
-  color:#0a192f;
-}
-.close{
-  background:rgba(255,255,255,.08);
-  color:#fff;
-  border:1px solid rgba(100,255,218,.18);
-}
-.stage{
-  position:relative;
-  flex:1;
-}
-.stage iframe{
-  position:absolute;
-  inset:0;
-  width:100%;
-  height:100%;
-  border:none;
-  background:#000;
-}
-#L{
-  position:absolute;
-  top:50%;
-  left:50%;
-  transform:translate(-50%,-50%);
-  color:#e50914;
-  font-size:24px;
-  z-index:2;
-}
-</style>
-</head>
-<body>
 
-<div class="shell">
-
-  <div class="bar">
-    <button class="back"
-      onclick="if(window.opener&&!window.opener.closed){
-        window.opener.focus();
-        window.close();
-      }else{
-        const w=window.open('about:blank','_blank');
-        if(w){
-          w.document.open();
-          w.document.write(localStorage.getItem('FinHubHTML')||'');
-          w.document.close();
-        }
-      }">
-      ← Back to Landing
-    </button>
-
-    <div class="ttl">🎬 Media</div>
-
-    <div class="acts">
-      <button class="close" onclick="window.close()">✕ Close</button>
-    </div>
-  </div>
-
-  <div class="stage">
-    <div id="L">Loading.</div>
-
-    <iframe
-      onload="document.getElementById('L').style.display='none'"
-      srcdoc="
-<!DOCTYPE html>
-<html>
-<head>
-<style>
-html,body{
-  margin:0;
-  width:100%;
-  height:100%;
-  overflow:hidden;
-  background:#000;
-}
-iframe{
-  position:fixed;
-  inset:0;
-  width:100%;
-  height:100%;
-  border:none;
-}
-</style>
-</head>
-<body>
-<iframe
-  src='https://cinemaos.tech'
-  allowfullscreen
-  allow='storage-access *; autoplay; fullscreen'>
-</iframe>
-</body>
-</html>">
-    </iframe>
-
-  </div>
-
-</div>
-
-</body>
-</html>
-`);
-  w.document.close();
+function moSetPreset(url) {
+  document.getElementById('mo-url').value = url;
+  loadMediaInBlank(url);
 }
 function closeMedia(){
   const mo=document.getElementById('mo');
