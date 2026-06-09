@@ -1,0 +1,158 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <title>MediaOS Loader</title>
+  <style>
+    body { font-family: system-ui, Arial; background:#071023; color:#e6eef8; margin:20px; }
+    #site-loader { display:flex; gap:8px; align-items:center; margin:12px 0; }
+    #site-url-input, #site-name-input { padding:8px; border-radius:6px; border:1px solid #2b394a; background:#0b1522; color:#e6eef8; }
+    #site-url-input { flex:1; }
+    #site-load-btn { padding:8px 12px; border-radius:6px; border:none; background:#2563eb; color:#fff; cursor:pointer; }
+    #recent-section { margin-top:16px; transition:all .2s; opacity:0; height:0; overflow:hidden; }
+    #recent-section.visible { opacity:1; height:auto; }
+    #recent-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:8px; margin-top:8px; }
+    .site-card { background:#081226; padding:12px; border-radius:8px; cursor:pointer; border:1px solid #16324a; }
+    .site-name { font-weight:600; color:#fff; }
+    .site-url { font-size:12px; color:#99b4d6; margin-top:6px; }
+    .site-meta { margin-top:8px; }
+    .site-tag.purple { background:#6d28d9; color:#fff; padding:2px 6px; border-radius:999px; font-size:11px; display:inline-block; }
+    #bg-particles { position:fixed; inset:0; z-index:-1; pointer-events:none; }
+    .bg-particle { position:absolute; background:rgba(255,255,255,0.04); border-radius:50%; animation:float linear infinite; }
+    @keyframes float { from { transform:translateY(-10px); } to { transform:translateY(10px); } }
+  </style>
+</head>
+<body>
+  <h2>MediaOS Loader</h2>
+
+  <div id="site-loader">
+    <input id="site-url-input" type="text" placeholder="https://example.com" />
+    <input id="site-name-input" type="text" placeholder="Site name (optional)" style="width:220px;" />
+    <button id="site-load-btn">Load</button>
+  </div>
+
+  <section id="recent-section">
+    <div id="recent-count">0 sites</div>
+    <div id="recent-grid"></div>
+  </section>
+
+  <div id="bg-particles"></div>
+
+  <script>
+    // --- state ---
+    let recentSites = [];
+
+    // --- particles init (keeps original behavior) ---
+    function initParticles() {
+      const container = document.getElementById('bg-particles');
+      for (let i = 0; i < 20; i++) {
+        const p = document.createElement('div');
+        p.className = 'bg-particle';
+        const size = (Math.random() * 4 + 2);
+        p.style.width = size + 'px';
+        p.style.height = size + 'px';
+        p.style.left = Math.random() * 100 + '%';
+        p.style.top = Math.random() * 100 + '%';
+        p.style.animationDelay = Math.random() * 20 + 's';
+        p.style.animationDuration = (15 + Math.random() * 10) + 's';
+        container.appendChild(p);
+      }
+    }
+
+    // --- track/open logic (sanitized template usage) ---
+    function trackAndOpen(url, name) {
+      recentSites = recentSites.filter(s => s.url !== url);
+      recentSites.unshift({ url, name });
+      if (recentSites.length > 6) recentSites.pop();
+      updateRecent();
+
+      const win = window.open('about:blank', '_blank');
+      if (!win) {
+        alert('Popup blocked. Allow popups for this site.');
+        return;
+      }
+
+      // Create a safe HTML string (escape only backticks to avoid template issues)
+      const safeUrl = url.replace(/`/g, '%60');
+      const html = '<!DOCTYPE html><html style="margin:0;padding:0;height:100%;"><head><meta charset="utf-8"><title>MediaOS</title><style>body{margin:0;padding:0;height:100vh;overflow:hidden;background:#0a0f1a;}iframe{width:100vw;height:100vh;border:none;display:block;}</style></head><body><iframe src="' + safeUrl + '" allowfullscreen sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox"></iframe></body></html>';
+
+      win.document.open();
+      win.document.write(html);
+      win.document.close();
+    }
+
+    // --- update recent UI ---
+    function updateRecent() {
+      const section = document.getElementById('recent-section');
+      const grid = document.getElementById('recent-grid');
+      const count = document.getElementById('recent-count');
+      if (recentSites.length === 0) {
+        section.classList.remove('visible');
+        count.textContent = '0 sites';
+        grid.innerHTML = '';
+        return;
+      }
+      section.classList.add('visible');
+      count.textContent = recentSites.length + ' site' + (recentSites.length !== 1 ? 's' : '');
+      grid.innerHTML = recentSites.map((s, i) => {
+        const displayUrl = s.url.replace(/^https?:\/\//, '');
+        // use data attributes to avoid inline-onclick quoting issues
+        return '<div class="site-card" data-url="' + encodeURIComponent(s.url) + '" data-name="' + encodeURIComponent(s.name) + '" style="animation-delay:' + (i * 0.05) + 's"><div class="card-content"><div class="site-name">' + escapeHtml(s.name) + '</div><div class="site-url">' + escapeHtml(displayUrl) + '</div><div class="site-meta"><span class="site-tag purple">Recent</span></div></div></div>';
+      }).join('');
+      // attach click handlers
+      Array.from(grid.querySelectorAll('.site-card')).forEach(card => {
+        card.addEventListener('click', () => {
+          const u = decodeURIComponent(card.getAttribute('data-url'));
+          const n = decodeURIComponent(card.getAttribute('data-name'));
+          trackAndOpen(u, n);
+        });
+      });
+    }
+
+    // basic HTML escape for names
+    function escapeHtml(str) {
+      return String(str).replace(/[&<>"']/g, function (m) {
+        return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m];
+      });
+    }
+
+    // --- URL normalize/validate ---
+    function normalizeUrl(input) {
+      if (!input) return '';
+      input = input.trim();
+      if (!/^https?:\/\//i.test(input)) {
+        input = 'https://' + input;
+      }
+      try {
+        const url = new URL(input);
+        return url.toString();
+      } catch (e) {
+        return '';
+      }
+    }
+
+    // --- load button handler ---
+    function handleLoadClick() {
+      const urlInput = document.getElementById('site-url-input').value;
+      const nameInput = document.getElementById('site-name-input').value || urlInput;
+      const url = normalizeUrl(urlInput);
+      if (!url) {
+        alert('Please enter a valid URL.');
+        return;
+      }
+      trackAndOpen(url, nameInput);
+      // clear URL field optionally:
+      // document.getElementById('site-url-input').value = '';
+    }
+
+    // --- DOM ready wiring ---
+    document.addEventListener('DOMContentLoaded', () => {
+      initParticles();
+      document.getElementById('site-load-btn').addEventListener('click', handleLoadClick);
+      document.getElementById('site-url-input').addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') handleLoadClick();
+      });
+    });
+  </script>
+</body>
+</html>
