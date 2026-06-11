@@ -49,7 +49,8 @@
     @keyframes orbFloat{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(30px,-30px) scale(1.1)}66%{transform:translate(-20px,20px) scale(.9)}}
     .bubble-lp{position:absolute;bottom:-100px;background:rgba(100,255,218,.12);border-radius:50%;animation:floatUp linear infinite;pointer-events:none;box-shadow:0 0 20px rgba(100,255,218,.2);opacity:1;z-index:2}
     @keyframes floatUp{0%{transform:translateY(0) scale(0);opacity:0}10%{opacity:.6}100%{transform:translateY(-120vh) scale(1.5);opacity:0}}
-    .lt{font-size:clamp(3.5rem,12vw,7rem);font-weight:900;background:linear-gradient(90deg,var(--primary),var(--accent),var(--accent-dark),var(--primary));background-size:300% 300%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;letter-spacing:-3px;animation:textGradient 5s ease infinite;margin-bottom:.5rem;filter:drop-shadow(0 0 30px rgba(100,255,218,.3));text-align:center}
+    .lt{font-family:inherit;
+font-size:clamp(3.5rem,12vw,7rem);font-weight:900;background:linear-gradient(90deg,var(--primary),var(--accent),var(--accent-dark),var(--primary));background-size:300% 300%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;letter-spacing:-3px;animation:slideUp .9s ease both,textGradient 5s ease infinite,titleFloat 3s ease-in-out infinite,titleGlow 2.5s ease-in-out infinite;margin-bottom:.5rem;filter:drop-shadow(0 0 30px rgba(100,255,218,.3));text-align:center}
     @keyframes textGradient{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
     .ls{font-size:1.5rem;color:var(--text-secondary);margin-bottom:3rem;font-weight:300;letter-spacing:2px;animation:fadeInUp 1s ease .3s both}
     .br,.brs{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin:0 auto 20px;max-width:900px;animation:fadeInUp 1s ease .5s both}
@@ -224,15 +225,27 @@
     ::-webkit-scrollbar-thumb{background:rgba(100,255,218,.2);border-radius:5px;border:2px solid transparent;background-clip:content-box}
     ::selection{background:rgba(100,255,218,.3);color:#fff}
     /* Plain mode: remove decorative effects while keeping content */
-    *,:before,:after{animation:none!important;transition:none!important;box-shadow:none!important;text-shadow:none!important;filter:none!important;backdrop-filter:none!important}
-    .orb,.bubble-lp,.maint-particles,.sakura,#bg-canvas{display:none!important}
+    
+    .maint-particles,
+.sakura{
+display:none!important;
+}
+
+.orb,
+.bubble-lp{
+display:block!important;
+}
+
+#bg-canvas{
+display:block!important;
+}
     html,body,#lp,#maintenance-page,.con,#sp,#go,#cb,#gcw,#data-modal .modal-content,
-    .settings-reminder-card,#test-homepage-wrap,#test-homepage-games,.card,
+    .settings-reminder-card,.card,
     .cov,.nm,.fb,.pb,button,.maint-btn,.setb,.sap,.b1,.b2,.b3,.b4,.bs,
     .aib,.rndb,.ctb,.sort-btn,.cloak-btn{
       background-image:none!important
     }
-    body,#lp,#maintenance-page,.con,#sp,#go,.settings-reminder-card,#test-homepage-wrap,#test-homepage-games,.card{background-color:#0f172a!important}
+    body,#lp,#maintenance-page,.con,#sp,#go,.settings-reminder-card,.card{background-color:#0f172a!important}
     button,.maint-btn,.setb,.sap,.b1,.b2,.b3,.b4,.bs,.aib,.rndb,.ctb,.sort-btn,.cloak-btn,.pb{background-color:#1e293b!important;color:#e2e8f0!important;border:1px solid #475569!important}
     h1,.lt,.maint-icon{background:none!important;-webkit-text-fill-color:currentColor!important;color:#e2e8f0!important}
     .nm,.pb,.fb{opacity:1!important;transform:none!important}
@@ -279,6 +292,48 @@ to{transform:translateY(80px)}
 @keyframes starDrift{
 from{transform:translateY(0)}
 to{transform:translateY(-200px)}
+}
+
+
+#test-homepage-wrap{
+position:relative;
+overflow:hidden;
+}
+
+#main-content::before{
+content:'';
+position:absolute;
+inset:0;
+background:
+radial-gradient(circle at 20% 30%,rgba(100,255,218,.18),transparent 20%),
+radial-gradient(circle at 80% 60%,rgba(0,180,216,.15),transparent 25%),
+radial-gradient(circle at 50% 80%,rgba(0,119,182,.18),transparent 20%);
+filter:blur(80px);
+animation:auroraMove 18s ease-in-out infinite alternate;
+pointer-events:none;
+}
+
+#main-content::after{
+content:'';
+position:fixed;
+inset:0;
+background:
+repeating-linear-gradient(
+90deg,
+transparent 0px,
+rgba(100,255,218,.03) 1px,
+transparent 2px,
+transparent 80px),
+repeating-linear-gradient(
+0deg,
+transparent 0px,
+rgba(100,255,218,.03) 1px,
+transparent 2px,
+transparent 80px);
+animation:gridScroll 10s linear infinite;
+opacity:.25;
+pointer-events:none;
+z-index:-1;
 }
 
 </style>
@@ -341,7 +396,48 @@ to{transform:translateY(-200px)}
       <div class="bubble-lp" style="width:15px;height:15px;left:5%;animation-duration:19s;animation-delay:4s"></div>
       <div class="bubble-lp" style="width:55px;height:55px;left:45%;animation-duration:11s;animation-delay:.8s"></div>
       <div id="landing-actions" style="text-align:center;z-index:10">
-        <h1 class="lt">🦈 FinHub</h1>
+ <style>
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(0px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(1000px);
+    }
+}
+
+@keyframes titleFloat {
+    0%,100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-6px);
+    }
+}
+
+@keyframes titleGlow {
+    0%,100% {
+        filter: drop-shadow(0 0 10px rgba(100,255,218,.3));
+    }
+    50% {
+        filter: drop-shadow(0 0 25px rgba(100,255,218,.7));
+    }
+}
+</style>
+<h1 class="lt" style="
+    animation:
+        slideUp .9s ease both,
+        textGradient 5s ease infinite,
+        titleFloat 3s ease-in-out infinite,
+        titleGlow 2.5s ease-in-out infinite;
+    margin-bottom:.5rem;
+    filter:drop-shadow(0 0 30px rgba(100,255,218,.3));
+    text-align:center;
+">
+    🦈 FinHub
+</h1>
         <p class="ls">Biting off hammerheadhub</p>
         <div class="br">
           <button class="b1" onclick="enterHub()">🎮 Games</button>
@@ -485,6 +581,7 @@ to{transform:translateY(-200px)}
             <div class="slbl">💾 Settings import / export</div>
             <button class="sap" onclick="exportData()">Export Settings Code</button>
             <button class="sap" onclick="document.getElementById('data-modal').style.display='flex'">Import Settings Code</button>
+            <p style="color:var(--text-secondary);font-size:0.8rem;margin-top:8px">Saves favorites, play stats, panic key, themes, cloak choices, trails, and background settings.</p>
           </div>
         </div>
         <div id="tab-customization" class="tab-panel">
@@ -538,8 +635,8 @@ to{transform:translateY(-200px)}
 
 
       </div>
-      <div id="test-homepage-wrap" style="min-height:calc(100vh - 250px);background:#111;border:1px solid var(--border);border-radius:24px;overflow:hidden;box-shadow:var(--shadow-lg);margin-top:8px">
-        <div id="test-homepage-games" style="width:100%;min-height:calc(100vh - 250px);background:#111"></div>
+      <div id="test-homepage-wrap" style="min-height:calc(100vh - 250px);border:1px solid var(--border);border-radius:24px;overflow:hidden;box-shadow:var(--shadow-lg);margin-top:8px">
+        <div id="test-homepage-games" style="width:100%;min-height:calc(100vh - 250px)"></div>
       </div>
       <div id="rs" style="display:none"><div class="slbl">Recently Played</div><div class="gg" id="rg"></div></div>
       <div class="gg" id="gg" style="display:none"></div>
@@ -1627,3 +1724,37 @@ function openLandingInAboutBlank(){
 </script>
 </body>
 </html>
+<style>
+.br button,.brs button{animation:buttonPulse 3s ease-in-out infinite}.br button:nth-child(2){animation-delay:.25s}.br button:nth-child(3){animation-delay:.5s}.brs button:nth-child(1){animation-delay:.75s}.brs button:nth-child(2){animation-delay:1s}@keyframes buttonPulse{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-6px) scale(1.03);box-shadow:0 15px 40px rgba(0,180,216,.45)}}@keyframes titleFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}@keyframes titleGlow{0%,100%{filter:drop-shadow(0 0 20px rgba(100,255,218,.25))}50%{filter:drop-shadow(0 0 40px rgba(100,255,218,.6)) drop-shadow(0 0 80px rgba(0,180,216,.35))}}
+#cb{
+position:relative;
+overflow:hidden;
+}
+#cb::before{
+content:'';
+position:absolute;
+inset:0;
+background:
+radial-gradient(circle at 20% 30%,rgba(100,255,218,.18),transparent 20%),
+radial-gradient(circle at 80% 60%,rgba(0,180,216,.15),transparent 25%),
+radial-gradient(circle at 50% 80%,rgba(0,119,182,.18),transparent 20%);
+filter:blur(80px);
+animation:auroraMove 18s ease-in-out infinite alternate;
+z-index:0;
+}
+#cb .stars-bg{
+position:absolute;
+inset:0;
+background-image:radial-gradient(white 1px,transparent 1px);
+background-size:40px 40px;
+opacity:.18;
+animation:starDrift 60s linear infinite;
+z-index:1;
+}
+#cb>*{
+position:relative;
+z-index:2;
+}
+
+</style>
+
