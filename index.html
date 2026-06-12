@@ -1,6 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script>
+window.addEventListener("load", () => {
+
+class Particle {
+    constructor(x, y) {
+        this.initialLifeSpan = Math.floor(Math.random() * 60 + 60);
+        this.lifeSpan = this.initialLifeSpan;
+
+        this.velocity = {
+            x: (Math.random() < 0.5 ? -1 : 1) * (Math.random() / 10),
+            y: -0.4 - Math.random()
+        };
+
+        this.position = { x, y };
+        this.baseDimension = 4;
+    }
+
+    update(ctx) {
+        this.position.x += this.velocity.x;
+        this.position.y += this.velocity.y;
+
+        this.velocity.x += ((Math.random() < 0.5 ? -1 : 1) * 2) / 75;
+        this.velocity.y -= Math.random() / 600;
+
+        this.lifeSpan--;
+
+        const scale =
+            0.2 + (this.initialLifeSpan - this.lifeSpan) / this.initialLifeSpan;
+
+        ctx.fillStyle = "#e6f1f7";
+        ctx.strokeStyle = "#3a92c5";
+
+        ctx.beginPath();
+        ctx.arc(
+            this.position.x,
+            this.position.y,
+            this.baseDimension * scale,
+            0,
+            Math.PI * 2
+        );
+        ctx.fill();
+        ctx.stroke();
+    }
+}
+
+const canvas = document.createElement("canvas");
+canvas.style.cssText = `
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+pointer-events:none;
+z-index:999999;
+`;
+
+document.body.appendChild(canvas);
+
+const ctx = canvas.getContext("2d");
+let particles = [];
+
+function resize() {
+    canvas.width = innerWidth;
+    canvas.height = innerHeight;
+}
+
+resize();
+addEventListener("resize", resize);
+
+document.addEventListener("mousemove", e => {
+    particles.push(new Particle(e.clientX, e.clientY));
+});
+
+function loop() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    particles.forEach(p => p.update(ctx));
+    particles = particles.filter(p => p.lifeSpan > 0);
+
+    requestAnimationFrame(loop);
+}
+
+loop();
+
+});</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🦈%3C/text%3E%3C/svg%3E">
