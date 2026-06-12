@@ -4,86 +4,73 @@
     <script>
         window.addEventListener("load", () => {
 
-class Particle {
-    constructor(x, y) {
-        this.initialLifeSpan = Math.floor(Math.random() * 60 + 60);
-        this.lifeSpan = this.initialLifeSpan;
+    const cursorCanvas = document.createElement("canvas");
+    cursorCanvas.style.cssText = `
+        position:fixed;
+        inset:0;
+        pointer-events:none;
+        z-index:1000000;
+    `;
 
-        this.velocity = {
-            x: (Math.random() < 0.5 ? -1 : 1) * (Math.random() / 10),
-            y: -0.4 - Math.random()
-        };
+    document.body.appendChild(cursorCanvas);
 
-        this.position = { x, y };
-        this.baseDimension = 4;
+    const ctx = cursorCanvas.getContext("2d");
+
+    function resize() {
+        cursorCanvas.width = innerWidth;
+        cursorCanvas.height = innerHeight;
     }
 
-    update(ctx) {
-        this.position.x += this.velocity.x;
-        this.position.y += this.velocity.y;
+    resize();
+    addEventListener("resize", resize);
 
-        this.velocity.x += ((Math.random() < 0.5 ? -1 : 1) * 2) / 75;
-        this.velocity.y -= Math.random() / 600;
+    class Particle {
+        constructor(x, y) {
+            this.x = x;
+            this.y = y;
+            this.vx = (Math.random() - 0.5) * 0.2;
+            this.vy = -0.4 - Math.random();
+            this.life = 120;
+        }
 
-        this.lifeSpan--;
+        update() {
+            this.x += this.vx;
+            this.y += this.vy;
+            this.life--;
+        }
 
-        const scale =
-            0.2 + (this.initialLifeSpan - this.lifeSpan) / this.initialLifeSpan;
+        draw() {
+            const r = (120 - this.life) * 0.06 + 1;
 
-        ctx.fillStyle = "#e6f1f7";
-        ctx.strokeStyle = "#3a92c5";
-
-        ctx.beginPath();
-        ctx.arc(
-            this.position.x,
-            this.position.y,
-            this.baseDimension * scale,
-            0,
-            Math.PI * 2
-        );
-        ctx.fill();
-        ctx.stroke();
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, r, 0, Math.PI * 2);
+            ctx.fillStyle = "#e6f1f7";
+            ctx.strokeStyle = "#3a92c5";
+            ctx.fill();
+            ctx.stroke();
+        }
     }
-}
 
-const canvas = document.createElement("canvas");
-canvas.style.cssText = `
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-pointer-events:none;
-z-index:999999;
-`;
+    let particles = [];
 
-document.body.appendChild(canvas);
+    document.addEventListener("mousemove", e => {
+        particles.push(new Particle(e.clientX, e.clientY));
+    });
 
-const ctx = canvas.getContext("2d");
-let particles = [];
+    function animate() {
+        ctx.clearRect(0, 0, cursorCanvas.width, cursorCanvas.height);
 
-function resize() {
-    canvas.width = innerWidth;
-    canvas.height = innerHeight;
-}
+        particles.forEach(p => {
+            p.update();
+            p.draw();
+        });
 
-resize();
-addEventListener("resize", resize);
+        particles = particles.filter(p => p.life > 0);
 
-document.addEventListener("mousemove", e => {
-    particles.push(new Particle(e.clientX, e.clientY));
-});
+        requestAnimationFrame(animate);
+    }
 
-function loop() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-    particles.forEach(p => p.update(ctx));
-    particles = particles.filter(p => p.lifeSpan > 0);
-
-    requestAnimationFrame(loop);
-}
-
-loop();
+    animate();
 
 });
     </script>
