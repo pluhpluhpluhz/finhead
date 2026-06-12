@@ -1,6 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script>
+    class Particle {
+    constructor(x, y) {
+        this.initialLifeSpan = Math.floor(Math.random() * 60 + 60);
+        this.lifeSpan = this.initialLifeSpan;
+
+        this.velocity = {
+            x: (Math.random() < 0.5 ? -1 : 1) * (Math.random() / 10),
+            y: -0.4 + Math.random() * -1
+        };
+
+        this.position = { x, y };
+        this.baseDimension = 4;
+    }
+
+    update(ctx) {
+        this.position.x += this.velocity.x;
+        this.position.y += this.velocity.y;
+
+        this.velocity.x += ((Math.random() < 0.5 ? -1 : 1) * 2) / 75;
+        this.velocity.y -= Math.random() / 600;
+
+        this.lifeSpan--;
+
+        const scale =
+            0.2 + (this.initialLifeSpan - this.lifeSpan) / this.initialLifeSpan;
+
+        ctx.fillStyle = "#e6f1f7";
+        ctx.strokeStyle = "#3a92c5";
+
+        ctx.beginPath();
+        ctx.arc(
+            this.position.x - (this.baseDimension / 2) * scale,
+            this.position.y - this.baseDimension / 2,
+            this.baseDimension * scale,
+            0,
+            Math.PI * 2
+        );
+        ctx.stroke();
+        ctx.fill();
+        ctx.closePath();
+    }
+}
+
+// Create canvas
+const canvas = document.createElement("canvas");
+canvas.style.position = "fixed";
+canvas.style.top = "0";
+canvas.style.left = "0";
+canvas.style.width = "100vw";
+canvas.style.height = "100vh";
+canvas.style.pointerEvents = "none";
+canvas.style.zIndex = "9999";
+
+document.body.appendChild(canvas);
+
+const ctx = canvas.getContext("2d");
+let particles = [];
+
+function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+}
+
+resizeCanvas();
+window.addEventListener("resize", resizeCanvas);
+
+function addParticle(x, y) {
+    particles.push(new Particle(x, y));
+}
+
+document.addEventListener("mousemove", e => {
+    addParticle(e.clientX, e.clientY);
+});
+
+document.addEventListener("touchmove", e => {
+    for (const touch of e.touches) {
+        addParticle(touch.clientX, touch.clientY);
+    }
+}, { passive: true });
+
+document.addEventListener("touchstart", e => {
+    for (const touch of e.touches) {
+        addParticle(touch.clientX, touch.clientY);
+    }
+}, { passive: true });
+
+function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    for (const particle of particles) {
+        particle.update(ctx);
+    }
+
+    particles = particles.filter(p => p.lifeSpan > 0);
+
+    requestAnimationFrame(animate);
+}
+
+if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    animate();
+}
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🦈%3C/text%3E%3C/svg%3E">
